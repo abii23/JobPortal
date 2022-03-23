@@ -1,0 +1,79 @@
+
+     
+            
+           
+           
+         <!-- Add contente in this below div   -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="pagetitle">
+
+                        <h1 style="text-align: center;color: rgb(115, 115, 115);">Category details</h1>
+                        <nav>
+                            <ol class="breadcrumb">
+
+                                <li class="breadcrumb"><span class="iconify w3-large" [routerLink]="['/AdminHomePage']" data-icon="mdi:home" style="width: 35px; height: 35px;margin-top:-51%"></span></li>
+                            <li class="breadcrumb-item">Category</li>
+                        <li class="breadcrumb-item active" >Category Details</li>    
+                        </ol>
+                        </nav>
+                   </div> 
+                   <!-- end page title -->
+                 <section class="section">
+                     <div class="row">
+                         <div class="col-lg-12">
+                             <div class="card">
+                                 <div class="card-body"></div>
+
+                                <table class="table" *ngIf="categoryList">
+                                    <p *ngIf="!categoryList"><em>Loading...</em></p>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Category</th>    
+                                            <th scope="col">Description</th>    
+                                            <th scope="col">Category id</th>    
+                                               
+
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let cu of categoryList;let i=index;">
+                                            <td>{{i+1}}</td>
+                                            <td>{{cu.CategoryName}}</td>
+                                            <td>{{cu.CategoryDescription}}</td>
+                                            <td>{{cu.category_id}}</td>
+                                            <td> <a [routerLink]="['/AdminHomePage/CategoryEdit']">edit</a></td>
+                                            <td><a [routerLink]="[]" (click)="delete(cu.category_id)">Delete</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                             </div>
+                         </div>
+                     </div>
+                 </section>
+                </div>
+                </div>
+              </div>
+            </div>
+        
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <!-- <footer class="footer">
+           
+          </footer> -->
+          <!-- partial -->
+     
+        <!-- main-panel ends -->
+      
+      <!-- page-body-wrapper ends -->
+   <!-- // <    /div> -->
+    <!-- container-scroller -->
+    
+  
