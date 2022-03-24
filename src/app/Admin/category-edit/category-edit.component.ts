@@ -10,12 +10,13 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 })
 export class CategoryEditComponent implements OnInit {
   categoryEditForm!:FormGroup;
+  public categoryList:any[]=[];
+  category_id:any;
   constructor(private adminRegistrationService:AdminRegistrationService,private fb:FormBuilder,private router:Router,private route:ActivatedRoute) 
   {
     route.params.subscribe(catid =>{this.category_id=catid['id'];})
    }
-  public categoryList:any[]=[];
-  category_id:any;
+ 
   ngOnInit(): void {
     this.categoryEditForm=this.fb.group({
       

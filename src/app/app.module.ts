@@ -18,7 +18,9 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { CategoryRegistrationComponent } from './Admin/CategoryRegistration/category-registration/category-registration.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CategoryDetailsComponent } from './Admin/category-details/category-details.component';
-import { CategoryEditComponent } from './Admin/category-edit/category-edit.component'
+import { CategoryEditComponent } from './Admin/category-edit/category-edit.component';
+import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
+import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { CategoryEditComponent } from './Admin/category-edit/category-edit.compo
     AdminLoginComponent,
     CategoryRegistrationComponent,
     CategoryDetailsComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    SubCategoryComponent,
+    SubcategoryDetailsComponent
   ],
   imports: [
     BrowserModule,

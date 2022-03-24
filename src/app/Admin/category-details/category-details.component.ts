@@ -12,7 +12,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 export class CategoryDetailsComponent implements OnInit {
   
 
-  constructor(private adminRegistrationService:AdminRegistrationService,fb:FormBuilder,private router:Router,private route:ActivatedRoute) { 
+  constructor(private adminRegistrationService:AdminRegistrationService,private fb:FormBuilder,private router:Router,private route:ActivatedRoute) { 
    
   }
 

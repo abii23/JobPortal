@@ -46,8 +46,8 @@
                                             <td>{{i+1}}</td>
                                             <td>{{cu.CategoryName}}</td>
                                             <td>{{cu.CategoryDescription}}</td>
-                                            <td>{{cu.category_id}}</td>
-                                            <td> <a [routerLink]="['/AdminHomePage/CategoryEdit']">edit</a></td>
+                                           
+                                            <td> <a [routerLink]="['/AdminHomePage/CategoryEdit',cu.category_id]">edit</a></td>
                                             <td><a [routerLink]="[]" (click)="delete(cu.category_id)">Delete</a></td>
                                         </tr>
                                     </tbody>

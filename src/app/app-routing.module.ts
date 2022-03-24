@@ -6,6 +6,8 @@ import { CategoryDetailsComponent } from './Admin/category-details/category-deta
 import { CategoryEditComponent } from './Admin/category-edit/category-edit.component';
 import { CategoryRegistrationComponent } from './Admin/CategoryRegistration/category-registration/category-registration.component';
 import { CompanyRegistrationComponent } from './Admin/CompanyRegistraionForm/company-registration/company-registration.component';
+import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
+import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component';
 import { GuestHomeComponent } from './Guest/guest-home/guest-home.component';
 import { LoginFormComponent } from './Guest/login-form/login-form.component';
 import { ProviderComponent } from './Provider/provider/provider.component';
@@ -16,7 +18,9 @@ const routes: Routes = [{path:'user',component:UserHomeComponent},
   {path:'CompanyRegistration',component:CompanyRegistrationComponent},
   {path:'CategoryDetails',component:CategoryDetailsComponent},
 {path:'Categoryregistration',component:CategoryRegistrationComponent},
-{path:'CategoryEdit',component:CategoryEditComponent}
+{path:'CategoryEdit/:id',component:CategoryEditComponent},
+{path:'SubCategory',component:SubCategoryComponent},
+{path:'SubCategoryDetails',component:SubcategoryDetailsComponent}
 ]},
 
 {path:'GuestHome',component:GuestHomeComponent},

@@ -1,0 +1,58 @@
+<div class="container card-0 justify-content-center ">
+    <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col">
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Category Updation</h3>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Update your Category here </p>
+            </div>
+        </div>
+        <form [formGroup]="subCategory">
+
+            <div class="row justify-content-center round">
+                <div class="col-lg-10 col-md-12 ">
+                    <div class="card shadow-lg card-1">
+                        <div class="card-body inner-card">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12" >
+
+                                 
+                                    <div class="form-group" style="margin-left:-10%"><label for="first-name">Category Name</label>
+
+                                 </div>
+                                    <select class="form-control" style="margin-left:-10%;color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="category">
+                                        <option value="">-- Select Category --</option>
+                                        <option *ngFor="let Category of CategoryList" value="{{ Category.id }}">
+                                          {{Category.CategoryName}}
+                                        </option>
+                                      </select>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    
+                    
+                                    <div class="form-group"><label for="first-name">Sub Category Name</label>
+                                        <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="SubCategoryName"  id="" placeholder="Type Category Name"> </div>
+                                    
+                                    <label for="Description">Description</label>
+                                    <textarea name="" id="" formControlName="SubCategoryDescription" cols="30" rows="10"></textarea>
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="row justify-content-end mb-5">
+                                        <div class="col-lg-4 col-auto ">
+                                            <button type="button" (click)="SaveSubCategory()" class="btn btn-primary btn-block"><small class="font-weight-bold">Add Sub Category</small></button> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </form>
+        </div>
+    </div>

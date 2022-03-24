@@ -23,18 +23,17 @@ export class AdminRegistrationService {
   {
     return this.afs.doc("category/"+category_id).delete();
   }
-  updateProduct(category_id:string,category:any){
-    const categoryData= JSON.parse(JSON.stringify(category_id));
-    console.log("hwlo");
+  updateProduct(category_id:string, category:any){
+    //const categoryData= JSON.parse(JSON.stringify(category_id));
     
-    return this.afs.doc("category/" +category_id).update(categoryData);
+    return this.afs.doc("category/" +category_id).update(category);
   }
   getCategoryList() {
     return this.afs.collection<any>("category").snapshotChanges()
       .pipe(map((item: any) => {
         const catData: any[] = []
         if (item) {
-          //console.log(item)
+          // console.log(item)
           item.forEach((el: any) => {
             catData.push({
               id: el.payload.doc.id,
@@ -49,5 +48,10 @@ export class AdminRegistrationService {
     const productData = this.afs.doc<any>("category/" + category_id).valueChanges();
 
     return productData;
+  }
+  SaveSubCategory(Subcategory :any){
+    const Subcategorydata=JSON.parse(JSON.stringify(Subcategory));
+    return this.afs.collection("Subcategory").add(Subcategorydata);
+    
   }
 }
