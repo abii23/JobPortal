@@ -20,7 +20,16 @@ import {HttpClientModule} from '@angular/common/http';
 import { CategoryDetailsComponent } from './Admin/category-details/category-details.component';
 import { CategoryEditComponent } from './Admin/category-edit/category-edit.component';
 import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
-import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component'
+import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component';
+import { EditSubcategoryComponent } from './Admin/edit-subcategory/edit-subcategory.component';
+import { CompanyDetailsComponent } from './Admin/company-details/company-details.component';
+import { CompanyEditComponent } from './Admin/company-edit/company-edit.component';
+import { LocationRegistrationComponent } from './Admin/location-registration/location-registration.component';
+import { LocationViewComponent } from './Admin/location-view/location-view.component';
+import { LocationEditComponent } from './Admin/location-edit/location-edit.component';
+import { PostRegFormComponent } from './Provider/post-reg-form/post-reg-form.component';
+import { PostViewComponent } from './Provider/post-view/post-view.component';
+import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +44,17 @@ import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcate
     CategoryDetailsComponent,
     CategoryEditComponent,
     SubCategoryComponent,
-    SubcategoryDetailsComponent
+    SubcategoryDetailsComponent,
+    EditSubcategoryComponent,
+    CompanyDetailsComponent,
+    CompanyEditComponent,
+    LocationRegistrationComponent,
+    LocationViewComponent,
+    LocationEditComponent,
+    PostRegFormComponent,
+    PostViewComponent,
+    UserRegistrationComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -46,10 +65,7 @@ import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcate
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
-    
-
-    
-    
+      
   ],
   providers: [],
   bootstrap: [AppComponent]

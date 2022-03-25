@@ -1,0 +1,88 @@
+<div class="container card-0 justify-content-center ">
+    <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col">
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> User Registration</h3>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Sign in here and find out great opportunity with us..!</p>
+            </div>
+        </div>
+        <form  >
+
+            <div class="row justify-content-center round">
+                <div class="col-lg-10 col-md-12 ">
+                    <div class="card shadow-lg card-1">
+                        <div class="card-body inner-card">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 sm-4 col-12">
+                                    <div class="form-group"><label for="Seeker name">Seeker Name</label>
+                                        <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="PostName"  id="" placeholder="Enter Name"> </div>
+                                        <label for="District">District</label>
+
+                                        <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Category">
+                                            <option value="">-- Select Category --</option>
+                                            <option *ngFor="let District of districtList" value="{{ District.id }}">
+                                              {{District.DistrictName}}
+                                            </option>
+                                          </select>
+                                          <label for="Location">Location</label>
+
+                                          <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="SubCategory">
+                                            <option value="">-- Select Sub Category --</option>
+                                            <option *ngFor="let Location of LocationList" value="{{ Location.id }}">
+                                              {{Location.LocationName}}
+                                            </option>
+                                          </select>
+                                        
+                                          <label for="Contact Number">Contact Number</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Experience"  id="" placeholder="Enter Contact Number"> 
+                                          
+                                          <!-- <input  type="radio"  style="margin-left:-10%;display: flex;" name="flexRadioDefault" id="flexRadioDefault1">
+                                          <label for="Gender">Male</label>
+                                        
+
+                                          <input  type="radio" style="display: flex;" name="flexRadioDefault" id="flexRadioDefault1">
+                                          <label for="Gender">Female</label> -->
+
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                            
+                                            </label>
+
+                                          <label for="Qualification">Qualification</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Enter Qualification"  id="" placeholder="Enter Vacancy"> 
+                                          
+                                          <label for="Address">Address</label>
+                                          <textarea name="" id="" formControlName="Description" cols="20" rows="10"></textarea>
+
+                                          <label for="Email">Email</label>
+                                          <input type="Email" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Email"  id="" placeholder="Enter Email"> 
+
+                                          <label for="Password">Password</label>
+                                          <input type="password" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName=""  id="" placeholder="Enter Password"> 
+                                    </div>
+                             
+                                
+                                
+                            
+                            
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="row justify-content-end mb-5">
+                                        <div class="col-lg-4 col-auto ">
+                                            <button type="" class="btn btn-primary btn-block"><small class="font-weight-bold">Add Post</small></button> </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                 
+                    
+             
+                    </div>
+                </div>
+            </div>    
+        </form>
+        </div>
+        </div>
+        

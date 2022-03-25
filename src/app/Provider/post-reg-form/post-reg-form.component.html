@@ -1,0 +1,72 @@
+<div class="container card-0 justify-content-center ">
+    <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col">
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Post Registration</h3>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Post you Requirements here and find out great brains with us..!</p>
+            </div>
+        </div>
+        <form [formGroup]="postReg" >
+
+            <div class="row justify-content-center round">
+                <div class="col-lg-10 col-md-12 ">
+                    <div class="card shadow-lg card-1">
+                        <div class="card-body inner-card">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 sm-4 col-12">
+                                    <div class="form-group"><label for="Post name">Post Name</label>
+                                        <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="PostName"  id="" placeholder="Type Post Name"> </div>
+                                        <label for="Description">Category</label>
+
+                                        <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Category">
+                                            <option value="">-- Select Category --</option>
+                                            <option *ngFor="let Category of CategoryList" value="{{ Category.id }}">
+                                              {{Category.CategoryName}}
+                                            </option>
+                                          </select>
+                                          <label for="SubCategory">Sub category </label>
+
+                                          <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="SubCategory">
+                                            <option value="">-- Select Sub Category --</option>
+                                            <option *ngFor="let SubCategory of SubCategoryList" value="{{ SubCategory.id }}">
+                                              {{SubCategory.SubCategoryName}}
+                                            </option>
+                                          </select>
+                                        
+                                          <label for="Experience">Experience</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Experience"  id="" placeholder="Enter Experience"> 
+                                          
+                                          <label for="Vacancy">No. of Vacancy</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Vacancy"  id="" placeholder="Enter Vacancy"> 
+                                          
+                                          <label for="Description">Description</label>
+                                          <textarea name="" id="" formControlName="Description" cols="30" rows="10"></textarea>
+
+                                    </div>
+                             
+                                
+                                
+                            
+                            
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="row justify-content-end mb-5">
+                                        <div class="col-lg-4 col-auto ">
+                                            <button type="button" (click)="SavePost()" class="btn btn-primary btn-block"><small class="font-weight-bold">Add Post</small></button> </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                 
+                    
+             
+                    </div>
+                </div>
+            </div>    
+        </form>
+        </div>
+        </div>
+        

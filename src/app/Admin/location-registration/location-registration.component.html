@@ -1,0 +1,51 @@
+<div class="container card-0 justify-content-center ">
+    <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col">
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Location Registration</h3>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Register you Location here..!</p>
+            </div>
+        </div>
+        <form [formGroup]="Locationregistration" >
+
+            <div class="row justify-content-center round">
+                <div class="col-lg-10 col-md-12 ">
+                    <div class="card shadow-lg card-1">
+                        <div class="card-body inner-card">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 sm-4 col-12">
+                                    <div class="form-group"> <label for="District id">Select District</label> 
+                                        <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="District">
+                                            <option value="">-- Select Location --</option>
+                                            <option *ngFor="let District of districtList" value="{{District.id}}">
+                                                {{District.DistrictName}}
+                                            </option>
+                                        </select>
+                                    </div> 
+                                    <div class="form-group"><label for="first-name">Location Name</label>
+
+
+                                        <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="LocationName"  id="" placeholder="Type Location Name"> </div>
+                                    
+                                   
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-10 col-12">
+                                    <div class="row justify-content-end mb-5">
+                                        <div class="col-lg-4 col-auto ">
+                                            <button type="button" (click)="Savedata()" class="btn btn-primary btn-block"><small class="font-weight-bold">Add Category</small></button> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>

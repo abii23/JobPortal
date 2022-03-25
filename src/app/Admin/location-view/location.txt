@@ -1,0 +1,100 @@
+
+     
+            
+           
+   
+         <!-- Add contente in this below div   -->
+         <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="pagetitle">
+
+                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Location details</h1>
+                      <nav>
+                          <ol class="breadcrumb">
+
+                              <li class="breadcrumb"><span class="iconify w3-large" [routerLink]="['/AdminHomePage']" data-icon="mdi:home" style="width: 35px; height: 35px;margin-top:-51%"></span></li>
+                          <li class="breadcrumb-item">Location</li>
+                      <li class="breadcrumb-item active" >Location Details</li>    
+                      </ol>
+                      </nav>
+                 </div> 
+                 <!-- end page title -->
+              
+
+
+
+                <form>
+                    <div class="container" style="width:100%;margin-left:25%;margin-bottom: 5%;">
+                    <div class="row">
+                    <div class="col-md-9" style="box-shadow: 2px 2px 10px
+                    #4d4e4e; border-radius:0px; top: 100px;">
+                    <h2 style="text-align: center;margin-top: 6%;font-family: fantasy;">Product Report</h2>
+                    <div class="form-horizontal" style="margin-left:0px;">
+                    <label for="name">Select District</label>
+                    <select class="form-control"
+                    [formControl]="DistrictControl" (change)="onChange($event)">
+                    <option value="">-- Select  --</option>
+                    <option *ngFor="let district of districtList"
+                    value="{{ district.id }}">
+                    {{district.id}}
+                    </option>
+                    </select>
+
+                  <table  class="table table-striped text-center tablebordered" *ngIf="LocationList">
+<thead class="thead-dark">
+<tr> <th>#</th>
+<th>Location nam</th>
+<th>d</th>
+
+
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let cu of producList;let i=index;">
+<td>{{i+1}}</td>
+<td>{{ cu.LocatioName }}</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<!-- <h1>total count: {{producList?.length}}</h1> -->
+<BR>
+<BR>
+<BR>
+<BR>
+</form>
+                    
+
+
+
+
+              
+               </section>
+              </div>
+              </div>
+            </div>
+          </div>
+
+    
+      
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <!-- <footer class="footer">
+         
+        </footer> -->
+        <!-- partial -->
+   
+      <!-- main-panel ends -->
+    
+    <!-- page-body-wrapper ends -->
+ <!-- // <    /div> -->
+  <!-- container-scroller -->
+  
