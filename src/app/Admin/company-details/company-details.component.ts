@@ -10,6 +10,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 })
 export class CompanyDetailsComponent implements OnInit {
   public CompanyList:any[]=[];
+  public DistrictList:any[]=[];
   category_id:any;
 
   constructor(private route:Router,private router:ActivatedRoute,private fb:FormBuilder,private adminRegistrationService:AdminRegistrationService) { }
@@ -20,6 +21,10 @@ export class CompanyDetailsComponent implements OnInit {
   getCompany(){
     this.adminRegistrationService.getCompany().subscribe((data:any[])=>(this.CompanyList=data));
   }
+  getDistrict(){
+    this.adminRegistrationService.getLocationById(this.CompanyList.values).subscribe((data:any[])=>(this.DistrictList=data));
+  }
+  
   delete(Company_id:any){
     if(confirm("Are you sure you want to delete this employee record?")){
       this.adminRegistrationService.deleteCompany(Company_id).then(()=>

@@ -56,5 +56,22 @@ export class ProviderSerService {
   deletePost(Post_id:any)
   {
     return this.afs.doc("Post/"+Post_id).delete();
+ 
   }
+  getlogin(Login: any) {                                 //select location using district id
+    console.log(Login);
+    return this.afs.collection('CompanyDetails', (ref) => ref.where("CompanyEmail",
+    "==", Login))
+    .valueChanges({ idField: "Company_Id" })
+    } 
+
+    Providerlogin(username: any, password :any)
+    {
+      return this.afs.collection('CompanyDetails', (ref) => ref.where("CompanyEmail","==", username ).where("Password","==",password) ).valueChanges({ idField: "productId" })
+
+
+
+
+    }
+
 }

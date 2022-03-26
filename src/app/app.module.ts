@@ -30,6 +30,7 @@ import { LocationEditComponent } from './Admin/location-edit/location-edit.compo
 import { PostRegFormComponent } from './Provider/post-reg-form/post-reg-form.component';
 import { PostViewComponent } from './Provider/post-view/post-view.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
+import { ProviderLoginComponent } from './provider-login/provider-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { UserRegistrationComponent } from './user/user-registration/user-registr
     PostRegFormComponent,
     PostViewComponent,
     UserRegistrationComponent,
+    ProviderLoginComponent,
    
   ],
   imports: [

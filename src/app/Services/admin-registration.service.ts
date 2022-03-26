@@ -223,6 +223,13 @@ export class AdminRegistrationService {
       
       return this.afs.doc("Location/" +Location_id).update(category);
     }
+    getLocationByDistrict(DistrictId: any) {                                 //select location using district id
+      console.log(DistrictId);
+      return this.afs.collection('Location', (ref) => ref.where("District",
+      "==", DistrictId))
+      .valueChanges({ idField: "Location_Id" })
+      } 
+
     }
 
 

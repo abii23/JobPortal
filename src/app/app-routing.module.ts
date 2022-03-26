@@ -17,6 +17,7 @@ import { SubCategoryComponent } from './Admin/sub-category/sub-category.componen
 import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component';
 import { GuestHomeComponent } from './Guest/guest-home/guest-home.component';
 import { LoginFormComponent } from './Guest/login-form/login-form.component';
+import { ProviderLoginComponent } from './provider-login/provider-login.component';
 import { PostRegFormComponent } from './Provider/post-reg-form/post-reg-form.component';
 import { PostViewComponent } from './Provider/post-view/post-view.component';
 import { ProviderComponent } from './Provider/provider/provider.component';
@@ -48,7 +49,8 @@ const routes: Routes = [{path:'user',component:UserHomeComponent},
 {path:'UserLogin',component:LoginFormComponent},
 
 {path:'AdminLogin',component:AdminLoginComponent},
-{path:'UserRegistration',component:UserRegistrationComponent}
+{path:'UserRegistration',component:UserRegistrationComponent},
+{path:'providerLogin',component:ProviderLoginComponent}
 ];
 
 @NgModule({

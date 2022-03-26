@@ -53,11 +53,9 @@
             <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
               <li><a href="/user" class="nav-link active">Home</a></li>
               <li><a href="about.html">About</a></li>
-              <li class="has-children">
-                <a href="job-listings.html">Job Listings</a>
-                <ul class="dropdown">
-                  <li><a href="job-single.html">Apply for Job</a></li>
-                  <li><a href="post-job.html">Post a Job</a></li>
+              <li class="">
+                <a [routerLink]="['/providerLogin']">Post Job</a>
+                <ul >
                 </ul>
               </li>
               <!-- <li class="has-children">
@@ -80,13 +78,13 @@
             </ul>
           </nav>
           
-          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+          <!-- <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
             <div class="ml-auto">
               <a href="post-job.html" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Sign Up</a>
               <a href="login.html" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
             </div>
             <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -168,19 +166,22 @@
             <div class="job-listing-logo">
               <img src="/assets/Guest/images/job_logo_1.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
             </div>
+              <table *ngIf="PostList">
 
-            <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-              <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                <h2>Product Designer</h2>
-                <strong>Adidas</strong>
-              </div>
-              <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                <span class="icon-room"></span> New York, New York
-              </div>
-              <div class="job-listing-meta">
-                <span class="badge badge-danger">Part Time</span>
-              </div>
-            </div>
+                <div *ngFor="let cu of PostList;let i=index;" class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                  <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                    
+                    <h2>{{cu.PostName}}</h2>
+                    <strong>Adidas</strong>
+                  </div>
+                  <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                    <span class="icon-room"></span> New York, New York
+                  </div>
+                  <div class="job-listing-meta">
+                    <span class="badge badge-danger">Part Time</span>
+                  </div>
+                </div>
+              </table>
             
           </li>
           <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">

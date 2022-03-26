@@ -6,7 +6,7 @@
                 <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Sign in here and find out great opportunity with us..!</p>
             </div>
         </div>
-        <form  >
+        <form [formGroup]="userRegForm" >
 
             <div class="row justify-content-center round">
                 <div class="col-lg-10 col-md-12 ">
@@ -18,23 +18,23 @@
                                         <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="PostName"  id="" placeholder="Enter Name"> </div>
                                         <label for="District">District</label>
 
-                                        <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Category">
-                                            <option value="">-- Select Category --</option>
+                                        <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="District">
+                                            <option value="">-- Select District --</option>
                                             <option *ngFor="let District of districtList" value="{{ District.id }}">
                                               {{District.DistrictName}}
                                             </option>
                                           </select>
                                           <label for="Location">Location</label>
 
-                                          <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="SubCategory">
-                                            <option value="">-- Select Sub Category --</option>
+                                          <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Location">
+                                            <option value="">-- Select Location --</option>
                                             <option *ngFor="let Location of LocationList" value="{{ Location.id }}">
                                               {{Location.LocationName}}
                                             </option>
                                           </select>
                                         
                                           <label for="Contact Number">Contact Number</label>
-                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Experience"  id="" placeholder="Enter Contact Number"> 
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="ContactNum"  id="" placeholder="Enter Contact Number"> 
                                           
                                           <!-- <input  type="radio"  style="margin-left:-10%;display: flex;" name="flexRadioDefault" id="flexRadioDefault1">
                                           <label for="Gender">Male</label>
@@ -48,7 +48,7 @@
                                             </label>
 
                                           <label for="Qualification">Qualification</label>
-                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Enter Qualification"  id="" placeholder="Enter Vacancy"> 
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Qualification"  id="" placeholder="Enter Vacancy"> 
                                           
                                           <label for="Address">Address</label>
                                           <textarea name="" id="" formControlName="Description" cols="20" rows="10"></textarea>
@@ -57,7 +57,7 @@
                                           <input type="Email" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Email"  id="" placeholder="Enter Email"> 
 
                                           <label for="Password">Password</label>
-                                          <input type="password" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName=""  id="" placeholder="Enter Password"> 
+                                          <input type="password" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="password"  id="" placeholder="Enter Password"> 
                                     </div>
                              
                                 
@@ -68,7 +68,7 @@
                                 <div class="col-md-12 col-lg-10 col-12">
                                     <div class="row justify-content-end mb-5">
                                         <div class="col-lg-4 col-auto ">
-                                            <button type="" class="btn btn-primary btn-block"><small class="font-weight-bold">Add Post</small></button> </div>
+                                            <button type="" class="btn btn-primary btn-block"><small class="font-weight-bold">Sign in</small></button> </div>
                                         </div>
                                         
                                     </div>

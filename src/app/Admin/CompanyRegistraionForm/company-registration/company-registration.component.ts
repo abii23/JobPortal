@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegistrationService } from 'src/app/Services/admin-registration.service';
 
@@ -11,16 +11,14 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 export class CompanyRegistrationComponent implements OnInit {
    
     CompanyForm!:FormGroup
-    StateList:any[]=[];
+    LocationList:any[]=[];
     districtList:any[]=[''];
+    LocationControl = new FormControl('');
   constructor(private fb:FormBuilder,private adminRegistrationService:AdminRegistrationService,private route:Router,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.adminRegistrationService.getStateList().subscribe((data: any) => {         //to fetch data of state form firebase,getStateList() is on registration service page
-      this.StateList = data;
-      console.log(data)
-    });
+    
 
     this.adminRegistrationService.getDistrictList().subscribe((data: any) => {         //to fetch data of state form firebase
       this.districtList = data;
@@ -32,24 +30,37 @@ export class CompanyRegistrationComponent implements OnInit {
       CompanyEmail:[''],
       CompanyStartYear:[''],
       CompanyContactNumber:[''],
-      CompanyState:[''],
+      CompanyLocation:[''],
       CompanyDistrict:[''],
       CompanyAddress:[''],
-      Description:['']
+      Description:[''],
+      Password:['']
 
 
     })
   }
 
   SaveCompany(){
+    console.log(this.CompanyForm.value)
     this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
     {
       this.route.navigate(['AdminHomePage/CategoryDetails'])
     })
   }
+  getLocation(){
+    this.adminRegistrationService.getLocationById(this.CompanyForm.value.CompanyDistrict).subscribe((data:any[])=>(this.LocationList=data));
+  }
+
+  onChange(event: any) {
+    console.log(this.CompanyForm.value.CompanyDistrict);
+    this.adminRegistrationService.getLocationByDistrict(this.CompanyForm.value.CompanyDistrict)
+    .subscribe(res => {
+    console.log(res);
+    this.LocationList = res;
+    })
 
 }
 
-   
+}
 
 

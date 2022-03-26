@@ -17,22 +17,23 @@
                                     <div class="form-group"><label for="Company Name">Company Name</label><input type="text" formControlName="CompanyName" class="form-control" id="first-name" placeholder="Type your Name"> </div>
                                     <div class="form-group"> <label for="Company email">Company email</label> <input type="text" formControlName="CompanyEmail" class="form-control" id="Mobile-Number" placeholder=""> </div>
                                     
-                                    
+                                  <div class="form-group"> <label for="Company Password">Password</label> <input type="password" formControlName="Password" class="form-control" id="" placeholder=""> </div>
+
                                     <div class="form-group"> <label for="Date of Starting">Company Started year</label> <input type="date" formControlName="CompanyStartYear" class="form-control" id="time" placeholder=""> </div>
                                     
-                                    <div class="form-group"> <label for="State id">Select State</label> 
-                                        <select class="form-control" style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyState">
-                                            <option value="">-- Select Category --</option>
-                                            <option *ngFor="let State of StateList" value="{{ State.id }}">
-                                                {{State.StateName}}
+                                    <div class="form-group"> <label for="District id">Select District</label> 
+                                        <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;" (change)="onChange($event)"  formControlName="CompanyDistrict">
+                                            <option value="">-- Select District --</option>
+                                            <option *ngFor="let District of districtList" value="{{District.id}}">
+                                                {{District.DistrictName}}
                                             </option>
                                         </select>
                                     </div>
-                                    <div class="form-group"> <label for="District id">Select District</label> 
-                                        <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyDistrict">
-                                            <option value="">-- Select Category --</option>
-                                            <option *ngFor="let District of districtList" value="{{District.id}}">
-                                                {{District.DistrictName}}
+                                    <div class="form-group"> <label for="State id">Select Location</label> 
+                                        <select class="form-control" style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyLocation">
+                                            <option value="">-- Select Location --</option>
+                                            <option *ngFor="let Location of LocationList" value="{{ Location.Location_Id }}">
+                                                {{Location.LocationName}}
                                             </option>
                                         </select>
                                     </div>
