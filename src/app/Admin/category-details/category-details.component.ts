@@ -28,7 +28,7 @@ export class CategoryDetailsComponent implements OnInit {
     this.adminRegistrationService.getCategories().subscribe((data:any[])=>(this.categoryList=data));
   }
   delete(category_id:any){
-    if(confirm("Are you sure you want to delete this employee record?")){
+    if(confirm("Are you sure you want to delete this  record?")){
       this.adminRegistrationService.deleteCategory(category_id).then(()=>
       {
         this.getCategories();

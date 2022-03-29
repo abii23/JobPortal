@@ -13,11 +13,13 @@ import { EditSubcategoryComponent } from './Admin/edit-subcategory/edit-subcateg
 import { LocationEditComponent } from './Admin/location-edit/location-edit.component';
 import { LocationRegistrationComponent } from './Admin/location-registration/location-registration.component';
 import { LocationViewComponent } from './Admin/location-view/location-view.component';
+import { PostWiseReportComponent } from './Admin/post-wise-report/post-wise-report.component';
 import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
 import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component';
 import { GuestHomeComponent } from './Guest/guest-home/guest-home.component';
 import { LoginFormComponent } from './Guest/login-form/login-form.component';
 import { ProviderLoginComponent } from './provider-login/provider-login.component';
+import { PostEditComponent } from './Provider/post-edit/post-edit.component';
 import { PostRegFormComponent } from './Provider/post-reg-form/post-reg-form.component';
 import { PostViewComponent } from './Provider/post-view/post-view.component';
 import { ApplicantViewComponent } from './Provider/provider/applicant-view/applicant-view.component';
@@ -25,12 +27,15 @@ import { ProviderComponent } from './Provider/provider/provider.component';
 import { ApplicationFormComponent } from './user/application-form/application-form.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
+import { ViewMoreComponent } from './user/view-more/view-more.component';
 import { YourApplicationComponent } from './user/your-application/your-application.component';
 
 const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 ]},
-{path:'applyDetails/:id',component:ApplicationFormComponent},
+{path:'ViewMore/:id',component:ViewMoreComponent},
+{path:'applyDetails',component:ApplicationFormComponent},
 {path:'ApplicationView',component:YourApplicationComponent},
+
 
 
 {path:'AdminHomePage',component:AdminHomeComponent,children:[
@@ -45,7 +50,9 @@ const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 {path:'CompanyEdit/:id',component:CompanyEditComponent},
 {path:'locationRegistration',component:LocationRegistrationComponent},
 {path:'LocationDetails',component:LocationViewComponent},
-{path:'LocationEdit/:id',component:LocationEditComponent}
+{path:'LocationEdit/:id',component:LocationEditComponent},
+{path:'PostWise',component:PostWiseReportComponent},
+
 
 ]},
 
@@ -53,7 +60,8 @@ const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 {path:'Provider',component:ProviderComponent,children:[
   {path:'postReg',component:PostRegFormComponent},
   {path:'postView',component:PostViewComponent},
-  {path:'ApplicantView',component:ApplicantViewComponent}
+  {path:'ApplicantView',component:ApplicantViewComponent},
+  {path:'postEdit/:id',component:PostEditComponent}
 
 ]},
 {path:'UserLogin',component:LoginFormComponent},

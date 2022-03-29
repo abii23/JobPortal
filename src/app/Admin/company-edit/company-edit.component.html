@@ -44,9 +44,11 @@
                                         
                                         <label for="Description">Description</label> <textarea formControlName="Description" rows="10" cols="30" class="f"  style="color: rgb(252, 252, 252);background-color: #2A3038;" placeholder="enter Description"></textarea> </div>
                                         
+                                        <div class=""> <label for="Company Photo">Company Photo</label> 
+                                            <input type="file"  (change)="handleFileInput($event)" class="form-control" id="" placeholder=""> 
+                                        </div>
                                         
-                                        
-                                        
+                                     
                                         <!-- <div class="form-group"><label for="skill">Required Skills</label> <input type="text" class="form-control" id="skill" placeholder=""> </div>
                                         </div>
                                         <div class="col-lg-5 col-md-6 col-sm-12">

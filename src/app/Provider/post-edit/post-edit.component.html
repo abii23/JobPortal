@@ -28,7 +28,7 @@
 
                                           <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="SubCategory">
                                             <option value="">-- Select Sub Category --</option>
-                                            <option *ngFor="let SubCategory of SubCategoryList" value="{{ SubCategory.id }}">
+                                            <option *ngFor="let SubCategory of SubCategoryList" value="{{SubCategory.id}}">
                                               {{SubCategory.SubCategoryName}}
                                             </option>
                                           </select>
@@ -75,7 +75,7 @@
                                 <div class="col-md-12 col-lg-10 col-12">
                                     <div class="row justify-content-end mb-5">
                                         <div class="col-lg-4 col-auto ">
-                                            <button type="button" (click)="SavePost()" class="btn btn-primary btn-block"><small class="font-weight-bold">Add Post</small></button> </div>
+                                            <button type="button" (click)="UpdateCompany()" class="btn btn-primary btn-block"><small class="font-weight-bold">Update Post</small></button> </div>
                                         </div>
                                         
                                     </div>

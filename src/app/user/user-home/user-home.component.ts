@@ -20,6 +20,8 @@ export class UserHomeComponent implements OnInit {
   }
   PostListget(){
     this.UserRegistration.getPostList().subscribe((data:any[])=>(this.PostList=data));
+   
+    
   }
   
 }

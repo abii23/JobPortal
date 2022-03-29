@@ -10,32 +10,40 @@
                 <div class="card-body">
                   <div class="pagetitle">
 
-                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Category details</h1>
+                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Post Wise</h1>
                       <nav>
                           <ol class="breadcrumb">
 
                               <li class="breadcrumb"><span class="iconify w3-large" [routerLink]="['/AdminHomePage']" data-icon="mdi:home" style="width: 35px; height: 35px;margin-top:-51%"></span></li>
-                          <li class="breadcrumb-item">Sub Category</li>
-                      <li class="breadcrumb-item active" >Sub Category Details</li>    
+                          <li class="breadcrumb-item">Post</li>
+                      <li class="breadcrumb-item active" >Post Wise report</li>    
                       </ol>
                       </nav>
                  </div> 
                  <!-- end page title -->
                <section class="section">
+
+                <div class="form-group"> <label for="District id">Select Subcategory</label> 
+                    <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;" [formControl]="DistrictControl" (change)="onChange($event)"  formControlName="District">
+                        <option value="">-- Select Sub Category--</option>
+                        <option *ngFor="let SubCategory of SubcategoryList" value="{{SubCategory.id}}">
+                            {{SubCategory.SubCategoryName}}
+                        </option>
+                    </select>
+                </div> 
+
                    <div class="row">
                        <div class="col-lg-12">
                            <div class="card">
                                <div class="card-body"></div>
 
-                              <table class="table" *ngIf="SubcategoryList">
-                                  <p *ngIf="!SubcategoryList"><em>Loading...</em></p>
+                              <table class="table" *ngIf="postList">
+                                  <p *ngIf="!postList"><em>Loading...</em></p>
                                   <thead>
                                       <tr>
                                           <th scope="col">#</th>
-                                          <th scope="col">Category</th>   
-                                          <th scope="col" >Sub category</th> 
-                                          <th scope="col">Description</th>    
-                                            
+                                          <th scope="col">Location Name</th>    
+                                          <!-- <th scope="col">District</th>     -->
                                              
 
 
@@ -43,14 +51,14 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      <tr *ngFor="let cu of SubcategoryList;let i=index;">
+                                      <tr *ngFor="let cu of postList;let i=index;">
                                           <td>{{i+1}}</td>
-                                          <td>{{cu.category}}</td>
-                                          <td>{{cu.SubCategoryName}}</td>
-                                          <td>{{cu.SubCategoryDescription}}</td>
+                                          <td>{{cu.PostName}}</td>
+                                          
+                                          <!-- <td>{{cu.DistrictName}}</td> -->
                                          
-                                          <td> <a [routerLink]="['/AdminHomePage/SubCategoryEdit',cu.Subcategory_id]">edit</a></td>
-                                          <td><a [routerLink]="[]" (click)="delete(cu.Subcategory_id)">Delete</a></td>
+                                          <!-- <td> <a [routerLink]="['/AdminHomePage/LocationEdit',cu.Post_Id]">edit</a></td> -->
+                                          <td><a [routerLink]="[]" (click)="delete(cu.Post_Id)">Delete</a></td>
                                       </tr>
                                   </tbody>
                               </table>

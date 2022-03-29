@@ -4,20 +4,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProviderSerService } from 'src/app/Services/provider-ser.service';
 
 @Component({
-  selector: 'app-post-reg-form',
-  templateUrl: './post-reg-form.component.html',
-  styleUrls: ['./post-reg-form.component.scss']
+  selector: 'app-post-edit',
+  templateUrl: './post-edit.component.html',
+  styleUrls: ['./post-edit.component.scss']
 })
-export class PostRegFormComponent implements OnInit {
+export class PostEditComponent implements OnInit {
+ 
+ postList:any[]=['']
   postReg!:FormGroup
+
   CategoryList:any[]=[''];
   SubCategoryList:any[]=[''];
   LocationList:any[]=[''];
- 
-  
-  
+  Post_id: any;
 
-  constructor(private fb:FormBuilder,private route:Router,private router:ActivatedRoute,private providerRegistration:ProviderSerService) { }
+  constructor(private fb:FormBuilder,private route:Router,private router:ActivatedRoute,private providerRegistration:ProviderSerService)
+   {
+    router.params.subscribe(catid =>{this.Post_id=catid['id'];})
+    }
 
   ngOnInit(): void {
     this.providerRegistration.getCategoryList().subscribe((data: any) => {
@@ -47,13 +51,28 @@ export class PostRegFormComponent implements OnInit {
       
 
     })
-  }
-  SavePost(){
-   
-    this.providerRegistration.SavePost(this.postReg.value).then(()=>
+    this.providerRegistration.getPostList().subscribe((data: any) => {
+      this.postList = data;
+      console.log(data)
+    });
+    if(this.Post_id)
     {
-      this.route.navigate(['Provider/postView'])
-    })
+      this.providerRegistration.PostById(this.Post_id).subscribe((result: any)=>{
+        if(result){
+          this.postReg.patchValue(result);
+        }
+      });
+    }
+    else
+    {
+      alert("failed");
+    }
+  }
+  UpdateCompany(){
+    this.providerRegistration.updatePost(this.Post_id,this.postReg.value).then(()=>{
+      this.route.navigate(["Provider/postView"])
+    });
+  }
   }
 
-}
+

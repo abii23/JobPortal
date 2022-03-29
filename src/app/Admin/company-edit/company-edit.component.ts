@@ -14,6 +14,7 @@ export class CompanyEditComponent implements OnInit {
   public StateList:any[]=[];
   public districtList:any[]=[];
   Company_id:any;
+  public choosenFile: any;
 
   constructor(private fb:FormBuilder,private route:Router,private router:ActivatedRoute,private adminRegistration:AdminRegistrationService) 
   { 
@@ -67,6 +68,11 @@ export class CompanyEditComponent implements OnInit {
     this.adminRegistration.updateCompany(this.Company_id,this.CompanyEditForm.value).then(()=>{
       this.route.navigate(["AdminHomePage/CompanyDetails"])
     });
+  }
+  handleFileInput(event: any) {
+    console.log(event.target.files[0])
+    this.choosenFile = event.target.files[0]
+    
   }
 
 }

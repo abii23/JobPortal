@@ -24,7 +24,7 @@ export class UserSerService {
 
      }
   getDistrictList() {                                               //select datas from district collection for select box
-    return this.afs.collection<any>("District").snapshotChanges()
+    return this.afs.collection<any>("Collection_District").snapshotChanges()
       .pipe(map((item: any) => {
         const catData: any[] = []
         if (item) {
@@ -40,7 +40,7 @@ export class UserSerService {
       }))
     }
     getLocationList() {                                               //select datas from district collection for select box
-      return this.afs.collection<any>("Location").snapshotChanges()
+      return this.afs.collection<any>("Collection_Location").snapshotChanges()
         .pipe(map((item: any) => {
           const catData: any[] = []
           if (item) {
@@ -59,7 +59,7 @@ export class UserSerService {
 
       
       getPostList(){
-          const post=this.afs.collection("Post").valueChanges({idField:"Post_id"});
+          const post=this.afs.collection("Collection_Post").valueChanges({idField:"Post_id"});
           console.log(post)
           return post;
         }
@@ -80,6 +80,35 @@ export class UserSerService {
     return this.afs.doc("Collection_ApplyDetails/"+user_id).delete();
  
   }
+  getLocationByDistrict(DistrictId: any) {                                 //select location using district id
+    console.log(DistrictId);
+    return this.afs.collection('Collection_Location', (ref) => ref.where("District",
+    "==", DistrictId))
+    .valueChanges({ idField: "Location_Id" })
+    } 
+    getLocationById(location_id: any) {
+      const productData = this.afs.doc<any>("Collection_Location/" + location_id).valueChanges();
+  
+      return productData;
+    }
+    updateUser(User_id:string, user:any){
+      //const categoryData= JSON.parse(JSON.stringify(category_id));
+      
+      return this.afs.doc("Collection_user/" +User_id).update(user);
+    }
+    getPost(post_id:any){
+    /*   console.log(post_id);
+      return this.afs.collection('Post', (ref) => ref.where("id",
+      "==", post_id))
+      .valueChanges({ idField: "post_id" }) */
+      const postData = this.afs
+      .doc<any>("Collection_Post/" + post_id)
+      .valueChanges();
+
+    return postData;
+
+
+    }
 
         login() {
           // Store the return URL in localstorage, to be used once the user logs in successfully
@@ -97,12 +126,12 @@ export class UserSerService {
                 status:false,
                
               } 
-               this.afs.doc(`user/${userDetails.uid}`)
+               this.afs.doc(`Collection_user/${userDetails.uid}`)
                 .set(userDetails) 
                 .then(res => {
                   console.log(res)
                   localStorage.setItem('userid',userDetails.uid);
-                  this.router.navigate(['/user']);
+                  this.router.navigate(['/UserRegistration']);
                   
                 })
                 .catch(err => {

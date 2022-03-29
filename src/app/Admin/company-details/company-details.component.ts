@@ -26,7 +26,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
   
   delete(Company_id:any){
-    if(confirm("Are you sure you want to delete this employee record?")){
+    if(confirm("Are you sure you want to delete this  record?")){
       this.adminRegistrationService.deleteCompany(Company_id).then(()=>
       {
         this.getCompany();

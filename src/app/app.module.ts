@@ -34,6 +34,10 @@ import { ProviderLoginComponent } from './provider-login/provider-login.componen
 import { ApplicationFormComponent } from './user/application-form/application-form.component';
 import { ApplicantViewComponent } from './Provider/provider/applicant-view/applicant-view.component';
 import { YourApplicationComponent } from './user/your-application/your-application.component';
+import { ViewMoreComponent } from './user/view-more/view-more.component';
+import { PostEditComponent } from './Provider/post-edit/post-edit.component';
+import { PostWiseReportComponent } from './Admin/post-wise-report/post-wise-report.component';
+import { MoreDetailsComponent } from './user/more-details/more-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +66,10 @@ import { YourApplicationComponent } from './user/your-application/your-applicati
     ApplicationFormComponent,
     ApplicantViewComponent,
     YourApplicationComponent,
+    ViewMoreComponent,
+    PostEditComponent,
+    PostWiseReportComponent,
+    MoreDetailsComponent,
    
   ],
   imports: [

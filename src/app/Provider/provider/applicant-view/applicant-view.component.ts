@@ -16,14 +16,16 @@ export class ApplicantViewComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getApplication()
   }
   getApplication(){
     this.company_id=localStorage.getItem("CompanyId")
 
     
     
-    console.log(this.company_id.value)
-    this.providerRegistration.getApplication(this.company_id).subscribe((data:any[])=>(this.ApplicationList=data));
+    console.log(this.company_id)
+    this.providerRegistration.getApplication(this.company_id).then((data:any[])=>(this.ApplicationList=data));
+    console.log(this.ApplicationList.values)
   }
   delete(Post_id:any){
     console.log(Post_id);
