@@ -20,11 +20,19 @@ import { LoginFormComponent } from './Guest/login-form/login-form.component';
 import { ProviderLoginComponent } from './provider-login/provider-login.component';
 import { PostRegFormComponent } from './Provider/post-reg-form/post-reg-form.component';
 import { PostViewComponent } from './Provider/post-view/post-view.component';
+import { ApplicantViewComponent } from './Provider/provider/applicant-view/applicant-view.component';
 import { ProviderComponent } from './Provider/provider/provider.component';
+import { ApplicationFormComponent } from './user/application-form/application-form.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
+import { YourApplicationComponent } from './user/your-application/your-application.component';
 
-const routes: Routes = [{path:'user',component:UserHomeComponent},
+const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
+]},
+{path:'applyDetails/:id',component:ApplicationFormComponent},
+{path:'ApplicationView',component:YourApplicationComponent},
+
+
 {path:'AdminHomePage',component:AdminHomeComponent,children:[
   {path:'CompanyRegistration',component:CompanyRegistrationComponent},
   {path:'CategoryDetails',component:CategoryDetailsComponent},
@@ -44,7 +52,9 @@ const routes: Routes = [{path:'user',component:UserHomeComponent},
 {path:'GuestHome',component:GuestHomeComponent},
 {path:'Provider',component:ProviderComponent,children:[
   {path:'postReg',component:PostRegFormComponent},
-  {path:'postView',component:PostViewComponent}
+  {path:'postView',component:PostViewComponent},
+  {path:'ApplicantView',component:ApplicantViewComponent}
+
 ]},
 {path:'UserLogin',component:LoginFormComponent},
 

@@ -57,31 +57,65 @@ export class UserSerService {
       }
       
 
-      login() {
-        // Store the return URL in localstorage, to be used once the user logs in successfully
-        console.log("hello")
-        const returnUrl =
-        this.route.snapshot.queryParamMap.get("returnUrl") || this.router.url;
-        localStorage.setItem("returnUrl", returnUrl);
-        this.afAuth
-        .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      
+      getPostList(){
+          const post=this.afs.collection("Post").valueChanges({idField:"Post_id"});
+          console.log(post)
+          return post;
+        }
+        SavePost(Location :any){
+          const categorydata=JSON.parse(JSON.stringify(Location));
+          return this.afs.collection("Collection_ApplyDetails").add(categorydata);
+          
         }
         
-        getPostList() {
-          return this.afs.collection<any>("Post").snapshotChanges()
-            .pipe(map((item: any) => {
-              const catData: any[] = []
-              if (item) {
-                // console.log(item)
-                item.forEach((el: any) => {
-                  catData.push({
-                    id: el.payload.doc.id,
-                    ...el.payload.doc.data()
-                  })
+        getApplication(userid:any)
+  {
+    console.log(userid);
+      return this.afs.collection('Collection_ApplyDetails', (ref) => ref.where("User_id", "==", userid)) .valueChanges({ idField: "Application_id" })
+  }
+  DeleteApplication(user_id:any)
+  {
+    console.log(user_id)
+    return this.afs.doc("Collection_ApplyDetails/"+user_id).delete();
+ 
+  }
+
+        login() {
+          // Store the return URL in localstorage, to be used once the user logs in successfully
+          const returnUrl =
+            this.route.snapshot.queryParamMap.get("returnUrl") || this.router.url;
+        
+          localStorage.setItem("returnUrl", returnUrl);
+        
+          this.afAuth
+            .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+            .then(async (res: any) => { 
+              console.log(res);
+              const userDetails = { 
+                uid: res.user.uid,
+                status:false,
+               
+              } 
+               this.afs.doc(`user/${userDetails.uid}`)
+                .set(userDetails) 
+                .then(res => {
+                  console.log(res)
+                  localStorage.setItem('userid',userDetails.uid);
+                  this.router.navigate(['/user']);
+                  
                 })
-              }
-              return catData;
-            }))
+                .catch(err => {
+                  console.log(err)
+                  reject(err)
+                })
+            })
         }
-        
-}
+         
+        }
+        function reject(err: any) {
+        throw new Error('Function not implemented.');
+        }
+      
+
+

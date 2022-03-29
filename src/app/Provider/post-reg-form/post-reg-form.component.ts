@@ -12,6 +12,9 @@ export class PostRegFormComponent implements OnInit {
   postReg!:FormGroup
   CategoryList:any[]=[''];
   SubCategoryList:any[]=[''];
+  LocationList:any[]=[''];
+ 
+  
   
 
   constructor(private fb:FormBuilder,private route:Router,private router:ActivatedRoute,private providerRegistration:ProviderSerService) { }
@@ -25,17 +28,28 @@ export class PostRegFormComponent implements OnInit {
       this.SubCategoryList = data;
       console.log(data)
     });
+    this.providerRegistration.getLocationList().subscribe((data: any) => {
+      this.LocationList = data;
+      console.log(data)
+    });
+   
     this.postReg=this.fb.group({
       PostName:[''],
       Category:[''],
       SubCategory:[''],
       Experience:[''],
       Vacancy:[''],
-      Description:['']
+      Description:[''],
+      JobType:[''],
+      Location:[''],
+      company_id:localStorage.getItem("CompanyId")
+    
+      
 
     })
   }
   SavePost(){
+   
     this.providerRegistration.SavePost(this.postReg.value).then(()=>
     {
       this.route.navigate(['Provider/postView'])

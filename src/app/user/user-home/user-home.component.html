@@ -54,7 +54,7 @@
               <li><a href="/user" class="nav-link active">Home</a></li>
               <li><a href="about.html">About</a></li>
               <li class="">
-                <a [routerLink]="['/providerLogin']">Post Job</a>
+                <a [routerLink]="['/ApplicationView']">Your Applications</a>
                 <ul >
                 </ul>
               </li>
@@ -73,8 +73,14 @@
               </li> -->
               <li><a href="blog.html">Blog</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li class="d-lg-none"><a href="post-job.html"><span class="mr-2">+</span> Post Job</a></li>
+              <li class="d-lg-none"><a href="post-job.html"><span class="mr-2">+</span> Your Applications</a></li>
               <li class="d-lg-none"><a href="/src/app/user/user-home/login.html">Log In</a></li>
+              <li class="profile-name" style="margin-left: 26%;color: blanchedalmond;"> <a [routerLink]="['/GuestHome']">Log Out</a></li>
+        
+              <img class="img-xs rounded-circle " style ="width: 3%;height: 3%;margin-left: 2%; " src="/assets/Admin/assets/images/faces/face15.jpg" alt="">
+                  <span class="count bg-success"></span>
+                
+           
             </ul>
           </nav>
           
@@ -156,34 +162,38 @@
 
         <div class="row mb-5 justify-content-center">
           <div class="col-md-7 text-center">
-            <h2 class="section-title mb-2">43,167 Job Listed</h2>
+            <h2 class="section-title mb-2">Find Job here</h2>
           </div>
         </div>
         
-        <ul class="job-listings mb-5">
-          <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-            <a href="job-single.html"></a>
+        <ul *ngIf="PostList" class="job-listings mb-5">
+        
+          <li  *ngFor="let cu of PostList;let i=index;" class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+            <a [routerLink]="['/applyDetails',cu.Post_id]"></a>
             <div class="job-listing-logo">
-              <img src="/assets/Guest/images/job_logo_1.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
+              <img [src]="cu.fileUrl" height="30px" alt="Free Website Template by Free-Template.co" class="img-fluid">
             </div>
-              <table *ngIf="PostList">
 
-                <div *ngFor="let cu of PostList;let i=index;" class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                <div  class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                   <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
                     
                     <h2>{{cu.PostName}}</h2>
-                    <strong>Adidas</strong>
+                    <strong>{{cu.CompanyName}}</strong>
                   </div>
-                  <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                    <span class="icon-room"></span> New York, New York
+                  <br>
+                  <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25" >
+                    <span class="icon-room"></span> {{cu.Location}}
+                  </div>
+                  <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25" style="margin-top: 10%;">
+                    <span class=""></span> {{cu.Description}}
                   </div>
                   <div class="job-listing-meta">
-                    <span class="badge badge-danger">Part Time</span>
+                    <span class="badge badge-success">{{cu.JobType}}</span>
                   </div>
                 </div>
-              </table>
-            
-          </li>
+                
+              </li>
+<!--            
           <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div class="job-listing-logo">
@@ -301,7 +311,7 @@
                 <span class="badge badge-success">Full Time</span>
               </div>
             </div>
-          </li>
+          </li> -->
 
           
 
@@ -310,7 +320,7 @@
 
         <div class="row pagination-wrap">
           <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-            <span>Showing 1-7 Of 43,167 Jobs</span>
+            <!-- <span>Showing 1-7 Of 43,167 Jobs</span> -->
           </div>
           <div class="col-md-6 text-center text-md-right">
             <div class="custom-pagination ml-auto">

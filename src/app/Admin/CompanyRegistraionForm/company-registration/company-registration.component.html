@@ -41,7 +41,10 @@
                                     <div class="form-group">
                                         <div class="form-group"> <label for="Company Contact number">Company Contact number</label> <input type="text" formControlName="CompanyContactNumber" class="form-control" id="Mobile-Number" placeholder=""> </div>
                                         <label for="Company Address">Company Address</label> <textarea formControlName="CompanyAddress" rows="10" cols="30" class="f"  style="color: rgb(252, 252, 252);background-color: #2A3038;" placeholder="enter Description"></textarea> </div>
-                                        
+                                      
+                                        <div class="form-group"> <label for="Company Photo">Company Photo</label> 
+                                            <input type="file"  (change)="handleFileInput($event)" class="form-control" id="" placeholder=""> </div>
+            
                                         
                                         <label for="Description">Description</label> <textarea formControlName="Description" rows="10" cols="30" class="f"  style="color: rgb(252, 252, 252);background-color: #2A3038;" placeholder="enter Description"></textarea> </div>
                                         

@@ -11,12 +11,15 @@ export class UserHomeComponent implements OnInit {
 
   public PostList:any[]=[];
   
+  
   constructor(private UserRegistration:UserSerService,private route:Router) { }
 
   ngOnInit(): void {
+    this.PostListget()
     
   }
-  getSubCategories(){
+  PostListget(){
     this.UserRegistration.getPostList().subscribe((data:any[])=>(this.PostList=data));
   }
+  
 }

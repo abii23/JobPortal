@@ -23,10 +23,7 @@ export class GuestHomeComponent implements OnInit {
       login() {
         
           this.userRegistration.login();
-          if(this.appUser)
-          {
-            this.router.navigate(['Provider/postView'])
-          }
+          
           
     }
 

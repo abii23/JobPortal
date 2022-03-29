@@ -9,6 +9,7 @@ import { map } from 'rxjs';
 export class ProviderSerService {
 
   constructor(private afs:AngularFirestore,afAuth:AngularFireAuth) { }
+  
   SavePost(PostDetails :any){
     const PostData=JSON.parse(JSON.stringify(PostDetails));
     return this.afs.collection("Post").add(PostData);
@@ -47,14 +48,15 @@ export class ProviderSerService {
       }))
   }
   
-  getPost()
+  getPost(Company_id:any)
   {
-    const Company=this.afs.collection("Post").valueChanges({idField:"Post_id"});
-    return Company;
+    console.log(Company_id);
+      return this.afs.collection('Post', (ref) => ref.where("company_id", "==", Company_id)) .valueChanges({ idField: "company_id" })
   }
 
   deletePost(Post_id:any)
   {
+    console.log(Post_id)
     return this.afs.doc("Post/"+Post_id).delete();
  
   }
@@ -67,11 +69,32 @@ export class ProviderSerService {
 
     Providerlogin(username: any, password :any)
     {
-      return this.afs.collection('CompanyDetails', (ref) => ref.where("CompanyEmail","==", username ).where("Password","==",password) ).valueChanges({ idField: "productId" })
+      return this.afs.collection('CompanyDetails', (ref) => ref.where("CompanyEmail","==", username).where("Password","==",password) ).valueChanges({ idField: "CompanyId" })
 
 
 
 
+    }
+    getLocationList() {
+      return this.afs.collection<any>("Location").snapshotChanges()
+        .pipe(map((item: any) => {
+          const catData: any[] = []
+          if (item) {
+            // console.log(item)
+            item.forEach((el: any) => {
+              catData.push({
+                id: el.payload.doc.id,
+                ...el.payload.doc.data()
+              })
+            })
+          }
+          return catData;
+        }))
+    }
+    getApplication(Company_id:any)
+    {
+      console.log(Company_id);
+        return this.afs.collection('Collection_ApplyDetails', (ref) => ref.where("company_id", "==", Company_id)) .valueChanges({ idField: "company_id" })
     }
 
 }

@@ -31,6 +31,9 @@ import { PostRegFormComponent } from './Provider/post-reg-form/post-reg-form.com
 import { PostViewComponent } from './Provider/post-view/post-view.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { ProviderLoginComponent } from './provider-login/provider-login.component';
+import { ApplicationFormComponent } from './user/application-form/application-form.component';
+import { ApplicantViewComponent } from './Provider/provider/applicant-view/applicant-view.component';
+import { YourApplicationComponent } from './user/your-application/your-application.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +59,9 @@ import { ProviderLoginComponent } from './provider-login/provider-login.componen
     PostViewComponent,
     UserRegistrationComponent,
     ProviderLoginComponent,
+    ApplicationFormComponent,
+    ApplicantViewComponent,
+    YourApplicationComponent,
    
   ],
   imports: [

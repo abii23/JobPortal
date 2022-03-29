@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { map } from 'rxjs';
 })
 export class AdminRegistrationService {
 
-  constructor(public afAuth:AngularFireAuth,private afs:AngularFirestore) { }
+  constructor(public afAuth:AngularFireAuth,private afs:AngularFirestore,private angularfirestorage:AngularFireStorage) { }
   SaveCategory(category :any){
     const categorydata=JSON.parse(JSON.stringify(category));
     return this.afs.collection("category").add(categorydata);
@@ -46,6 +47,11 @@ export class AdminRegistrationService {
   }
   getCategoryById(category_id: any) {
     const productData = this.afs.doc<any>("category/" + category_id).valueChanges();
+
+    return productData;
+  }
+  getSubCategoryById(category_id: any) {
+    const productData = this.afs.doc<any>("Subcategory/" + category_id).valueChanges();
 
     return productData;
   }
@@ -136,7 +142,7 @@ export class AdminRegistrationService {
     return this.afs.doc("CompanyDetails/" +Company_id).update(Company);
   }
   getCompanyById(Company_id: any) {
-    const CompanyData = this.afs.doc<any>("Companydetails/" + Company_id).valueChanges();
+    const CompanyData = this.afs.doc<any>("CompanyDetails/" + Company_id).valueChanges();
 
     return CompanyData;
   }
@@ -229,7 +235,32 @@ export class AdminRegistrationService {
       "==", DistrictId))
       .valueChanges({ idField: "Location_Id" })
       } 
+      
 
+      upload(file: any) {
+        const path = `Images/${Date.now()}_${file.name}`;
+        const ref = this.angularfirestorage.ref(path);
+        const task = this.angularfirestorage.upload(path, file);
+        return new Promise((resolve, reject) => {
+          task.then(async (res) => {
+            res.ref.getDownloadURL()
+              .then(url => {
+                console.log(url)
+                resolve(url);
+              })
+              .catch((err) => {
+                console.log(err.message_);
+                reject(err.code_)
+              })
+          })
+            .catch((err) => {
+              console.log(err.message_);
+              reject(err.code_)
+            })
+        })
+      }
+      
+    
     }
 
 

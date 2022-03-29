@@ -39,7 +39,7 @@ export class EditSubcategoryComponent implements OnInit {
   });
   if(this.Subcategory_id)
   {
-    this.adminRegistration.getCategoryById(this.Subcategory_id).subscribe((result: any)=>{
+    this.adminRegistration.getSubCategoryById(this.Subcategory_id).subscribe((result: any)=>{
       if(result){
         this.SubcategoryEditForm.patchValue(result);
       }

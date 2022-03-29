@@ -29,6 +29,7 @@ export class ProviderLoginComponent implements OnInit {
     this.productList = res;
 if(this.productList.length>0)
 {
+  localStorage.setItem('CompanyId',this.productList.map(t=>t.CompanyId).toString())
   this.route.navigate(['/Provider']);
 }
 else

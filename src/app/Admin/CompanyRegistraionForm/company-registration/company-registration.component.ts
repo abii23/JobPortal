@@ -9,6 +9,8 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
   styleUrls: ['./company-registration.component.scss']
 })
 export class CompanyRegistrationComponent implements OnInit {
+  public choosenFile: any;
+  public loading = false;
    
     CompanyForm!:FormGroup
     LocationList:any[]=[];
@@ -34,33 +36,75 @@ export class CompanyRegistrationComponent implements OnInit {
       CompanyDistrict:[''],
       CompanyAddress:[''],
       Description:[''],
-      Password:['']
+      Password:[''],
+      fileUrl:['']
 
 
     })
   }
 
-  SaveCompany(){
-    console.log(this.CompanyForm.value)
-    this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
-    {
-      this.route.navigate(['AdminHomePage/CategoryDetails'])
-    })
-  }
   getLocation(){
     this.adminRegistrationService.getLocationById(this.CompanyForm.value.CompanyDistrict).subscribe((data:any[])=>(this.LocationList=data));
   }
-
+  
+  
   onChange(event: any) {
     console.log(this.CompanyForm.value.CompanyDistrict);
     this.adminRegistrationService.getLocationByDistrict(this.CompanyForm.value.CompanyDistrict)
     .subscribe(res => {
-    console.log(res);
-    this.LocationList = res;
+      console.log(res);
+      this.LocationList = res;
+    })
+    
+  }
+  handleFileInput(event: any) {
+    console.log(event.target.files[0])
+    this.choosenFile = event.target.files[0]
+    
+  }
+  // SaveCompany(){
+  //   console.log(this.CompanyForm.value)
+  //   this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
+  //   {
+  //     this.route.navigate(['AdminHomePage/CategoryDetails'])
+  //   })
+  // }
+  
+  SaveCompany()
+{
+
+this.adminRegistrationService.upload(this.choosenFile)
+.then(url => {
+  if (url) {
+    this.adminRegistrationService.upload({
+      fileUrl: url
     })
 
+this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
+{
+  this.route.navigate(["/AdminHomePage/CompanyDetails"]);
+});
+} else {
+alert("image upload error")
 }
 
+})
+
+.catch(err => {
+this.loading = false;
+console.log(err)
+})
+
+
+
+
+
+
+  }
+
+
+
+  
 }
 
 
