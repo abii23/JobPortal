@@ -19,7 +19,11 @@ export class SubcategoryDetailsComponent implements OnInit {
     this.getSubCategories();
   }
   getSubCategories(){
-    this.adminRegistrationService.getSubCategories().subscribe((data:any[])=>(this.SubcategoryList=data));
+    this.adminRegistrationService.getSubCategories().then((data:any[])=>(this.SubcategoryList=data));
+    console.log("hello");
+    
+    console.log(this.SubcategoryList);
+    
   }
   delete(Subcategory_id:any){
     if(confirm("Are you sure you want to delete this employee record?")){

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserSerService } from 'src/app/Services/user-ser.service';
+import firebase from 'firebase/compat';
 
 @Component({
   selector: 'app-user-home',
@@ -10,16 +11,23 @@ import { UserSerService } from 'src/app/Services/user-ser.service';
 export class UserHomeComponent implements OnInit {
 
   public PostList:any[]=[];
+  appUser!:firebase.User;
   
   
-  constructor(private UserRegistration:UserSerService,private route:Router) { }
+  constructor(private UserRegistration:UserSerService,private route:Router) 
+  {
+    this.UserRegistration.appUser$.subscribe((appUser:any)=>(this.appUser=appUser));
+   }
 
   ngOnInit(): void {
     this.PostListget()
     
   }
   PostListget(){
-    this.UserRegistration.getPostList().subscribe((data:any[])=>(this.PostList=data));
+    this.UserRegistration.getPostList().then((data:any[])=>{
+      this.PostList=data;
+      console.log(this.PostList);
+    });
    
     
   }

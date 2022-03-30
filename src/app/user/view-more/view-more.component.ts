@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Console } from 'console';
 import { UserSerService } from 'src/app/Services/user-ser.service';
@@ -10,14 +11,25 @@ import { UserSerService } from 'src/app/Services/user-ser.service';
 })
 export class ViewMoreComponent implements OnInit {
   Post_id: any;
-  PostData:any[]=[]
+  public PostData:any[]=[];
+  postdetails!:FormGroup;
 
-  constructor(private route:Router,private router:ActivatedRoute,private userRegistration:UserSerService) {
+
+  constructor(private route:Router,private router:ActivatedRoute,private userRegistration:UserSerService, private fb:FormBuilder) {
     router.params.subscribe(catid =>(this.Post_id=catid['id']));
    }
 
   ngOnInit(): void {
-    this.getPost()
+
+
+    this.postdetails=this.fb.group({
+      PostName:['']
+
+
+    })
+
+
+    this.getPost();
   }
   getPost(){
 
@@ -25,7 +37,9 @@ export class ViewMoreComponent implements OnInit {
 
     this.userRegistration.getPost(this.Post_id).subscribe((result:any)=>{
       if (result){
-        console.log(result);
+        this.PostData=result;
+        this.postdetails.patchValue(result);
+        console.log(this.PostData);
       }
     });
 

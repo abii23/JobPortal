@@ -19,7 +19,8 @@ export class CompanyDetailsComponent implements OnInit {
     this.getCompany();
   }
   getCompany(){
-    this.adminRegistrationService.getCompany().subscribe((data:any[])=>(this.CompanyList=data));
+    this.adminRegistrationService.getPostList().then((data:any[])=>{this.CompanyList=data;console.log(this.CompanyList)});
+    
   }
   getDistrict(){
     this.adminRegistrationService.getLocationById(this.CompanyList.values).subscribe((data:any[])=>(this.DistrictList=data));

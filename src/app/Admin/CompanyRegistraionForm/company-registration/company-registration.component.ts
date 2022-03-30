@@ -76,7 +76,7 @@ export class CompanyRegistrationComponent implements OnInit {
 this.adminRegistrationService.upload(this.choosenFile)
 .then(url => {
   if (url) {
-    this.adminRegistrationService.upload({
+    this.CompanyForm.patchValue({
       fileUrl: url
     })
 

@@ -77,7 +77,7 @@
               <li class="d-lg-none"><a href="/src/app/user/user-home/login.html">Log In</a></li>
               <li class="profile-name" style="margin-left: 26%;color: blanchedalmond;"> <a [routerLink]="['/GuestHome']">Log Out</a></li>
         
-              <img class="img-xs rounded-circle " style ="width: 3%;height: 3%;margin-left: 2%; " src="/assets/Admin/assets/images/faces/face15.jpg" alt="">
+              <img class="img-xs rounded-circle " style ="width: 3%;height: 3%; " src="{{ appUser?.photoURL}}" alt="">
                   <span class="count bg-success"></span>
                 
            
@@ -131,7 +131,7 @@
         <ul *ngIf="PostList" class="job-listings mb-5">
         
           <li  *ngFor="let cu of PostList;let i=index;" class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-            <a [routerLink]="['/ViewMore',cu.Post_id]"></a>
+            <a [routerLink]="['/ViewMore',cu.post_id]"></a>
             <div class="job-listing-logo">
               <img [src]="cu.fileUrl" height="30px" alt="Free Website Template by Free-Template.co" class="img-fluid">
             </div>
@@ -144,7 +144,7 @@
                   </div>
                   <br>
                   <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25" >
-                    <span class="icon-room"></span> {{cu.Location}}
+                    <span class="icon-room"></span> {{cu.LocationName}}
                   </div>
                   <!-- <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25" style="margin-top: 10%;">
                     <span ></span><a [routerLink]="['/ViewMore']">view More</a> 

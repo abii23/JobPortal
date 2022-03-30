@@ -59,9 +59,58 @@ export class UserSerService {
 
       
       getPostList(){
-          const post=this.afs.collection("Collection_Post").valueChanges({idField:"Post_id"});
-          console.log(post)
-          return post;
+         
+
+
+          return new Promise<any[]>((resolve, reject) => {
+            const Location = this.afs
+            .collection<any>("Collection_Post", (ref) => ref.orderBy("PostName") )
+            .valueChanges({ idField: "post_id" })
+            .subscribe(prodRes => {
+              this.getCompany().subscribe(res => {
+                prodRes.forEach(el => {
+                  el.fileUrl = res.find(el1 => el1.id === el.company_id)?.fileUrl
+                })
+                resolve(prodRes)
+              })
+              this.getLocationList().subscribe(res => {
+                prodRes.forEach(el => {
+                  el.LocationName = res.find(el1 => el1.id === el.Location)?.LocationName
+                })
+                resolve(prodRes)
+              })
+            })
+          })
+
+
+
+          
+
+
+        }
+
+        getCompany()
+        {
+         
+
+          return this.afs.collection<any>("Collection_CompanyDetails").snapshotChanges()
+          .pipe(map((item: any) => {
+            const catData: any[] = [] 
+            if (item) {
+              // console.log(item)
+              item.forEach((el: any) => {
+                catData.push({
+                  id: el.payload.doc.id,
+                  ...el.payload.doc.data()
+                })
+    
+              })
+            }
+            return catData;
+          }))
+
+
+
         }
         SavePost(Location :any){
           const categorydata=JSON.parse(JSON.stringify(Location));
@@ -101,11 +150,13 @@ export class UserSerService {
       return this.afs.collection('Post', (ref) => ref.where("id",
       "==", post_id))
       .valueChanges({ idField: "post_id" }) */
-      const postData = this.afs
+      return this.afs
       .doc<any>("Collection_Post/" + post_id)
-      .valueChanges();
+      .valueChanges(); 
+     
+     
 
-    return postData;
+   
 
 
     }

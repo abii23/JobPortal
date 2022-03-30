@@ -25,6 +25,7 @@ import { PostViewComponent } from './Provider/post-view/post-view.component';
 import { ApplicantViewComponent } from './Provider/provider/applicant-view/applicant-view.component';
 import { ProviderComponent } from './Provider/provider/provider.component';
 import { ApplicationFormComponent } from './user/application-form/application-form.component';
+import { MoreDetailsComponent } from './user/more-details/more-details.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { ViewMoreComponent } from './user/view-more/view-more.component';
@@ -35,6 +36,7 @@ const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 {path:'ViewMore/:id',component:ViewMoreComponent},
 {path:'applyDetails',component:ApplicationFormComponent},
 {path:'ApplicationView',component:YourApplicationComponent},
+{path:'moredetails/:id',component:MoreDetailsComponent},
 
 
 

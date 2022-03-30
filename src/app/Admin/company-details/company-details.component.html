@@ -50,7 +50,7 @@
                                       <tr *ngFor="let cu of CompanyList;let i=index;">
                                           <td>{{i+1}}</td>
                                           <td>{{cu.CompanyName}}</td>
-                                          <td>{{cu.CompanyDistrict}}</td>
+                                          <td>{{cu.DistrictName}}</td>
                                           <td>{{cu.CompanyEmail}}</td>
                                           <td>{{cu.CompanyContactNumber}}</td>
                                           <td>{{cu.LocationName}}</td>
@@ -58,8 +58,8 @@
                                           <!-- <td>{{cu.CompanyStartYear}}</td> -->
                                           <!-- <td>{{cu.Description}}</td> -->
                                          
-                                          <td> <a [routerLink]="['/AdminHomePage/CompanyEdit',cu.CompanyDetails_id]">edit</a></td>
-                                          <td><a [routerLink]="[]" (click)="delete(cu.CompanyDetails_id)">Delete</a></td>
+                                          <td> <a [routerLink]="['/AdminHomePage/CompanyEdit',cu.Company_id]">edit</a></td>
+                                          <td><a [routerLink]="[]" (click)="delete(cu.Company_id)">Delete</a></td>
                                       </tr>
                                   </tbody>
                               </table>

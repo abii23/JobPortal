@@ -95,12 +95,19 @@ export class ProviderSerService {
     {
     return new Promise<any[]>((resolve, reject) => {
       const Location = this.afs
-      .collection<any>("Collection_Post", (ref) => ref.where("company_id", "==" ,Company_id))
-      .valueChanges({ idField: "Post_id" })
+      .collection<any>("Collection_ApplyDetails")
+      .valueChanges({ idField: "Application_id" })
       .subscribe(prodRes => {
-        this.getApplicantList().subscribe(res => {
+        this.getPost1List().subscribe(res => {
           prodRes.forEach(el => {
-            el.Company_name = res.find(el1 => el1.id === el.Coompany_id)?.Company_name
+            el.PostName = res.find(el1 => el1.id === el.Post_id)?.PostName
+            
+          })
+          resolve(prodRes)
+        })
+        this.getuser1List().subscribe(res => {
+          prodRes.forEach(el => {
+            el.UserName = res.find(el1 => el1.id === el.User_id)?.UserName
           })
           resolve(prodRes)
         })
@@ -108,8 +115,8 @@ export class ProviderSerService {
     })
 
 }
-getApplicantList() {                                               //select datas from district collection for select box
-  return this.afs.collection<any>("Collection_ApplyDetails").snapshotChanges()
+getPost1List() {                                               //select datas from district collection for select box
+  return this.afs.collection<any>("Collection_Post").snapshotChanges()
     .pipe(map((item: any) => {
       const catData: any[] = []
       if (item) {
@@ -124,6 +131,22 @@ getApplicantList() {                                               //select data
       return catData;
     }))
   }
+  getuser1List() {                                               //select datas from district collection for select box
+    return this.afs.collection<any>("Collection_user").snapshotChanges()
+      .pipe(map((item: any) => {
+        const catData: any[] = []
+        if (item) {
+          // console.log(item)
+          item.forEach((el: any) => {
+            catData.push({
+              id: el.payload.doc.id,
+              ...el.payload.doc.data()
+            })
+          })
+        }
+        return catData;
+      }))
+    }
   PostById(Post_id: any) {
     const CompanyData = this.afs.doc<any>("Collection_Post/" + Post_id).valueChanges();
 
@@ -150,4 +173,35 @@ getApplicantList() {                                               //select data
         return catData;
       }))
   }
+  getProviderDetails(Company_Id: any) {                                 //select location using district id
+    console.log(Company_Id);
+    return this.afs.collection('Collection_CompanyDetails', (ref) => ref.where("CompanyId",
+    "==", Company_Id))
+    .valueChanges({ idField: "Company_Id" })
+    } 
+    // getPost() {                                                 //to select by id 
+    //   return new Promise<any[]>((resolve, reject) => {
+    //     const Product = this.afs
+    //     .collection<any>("Collection_Post", (ref) => ref.orderBy("PostName"))
+    //     .valueChanges({ idField: "postId" })
+    //     .subscribe(prodRes => {
+    //       this.getDistrictList().subscribe(res => {
+    //         prodRes.forEach(el => {
+    //           el.category = res.find(el1 => el1.id === el.category)?.categoryname
+    //         })
+    //         resolve(prodRes)
+    //       })
+    //     })
+    //   })
+  
+    // }
+getcompanywisepost(Company_id:any)
+{
+  console.log(Company_id);
+  return this.afs.collection('Collection_Post', (ref) => ref.where("company_id",
+  "==", Company_id))
+  .valueChanges({ idField: "Company_Id" })
 }
+
+  }
+

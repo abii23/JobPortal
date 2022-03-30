@@ -11,7 +11,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 export class CompanyEditComponent implements OnInit {
   CompanyEditForm!:FormGroup
   public CompanyList:any[]=[];
-  public StateList:any[]=[];
+  public LocationList:any[]=[];
   public districtList:any[]=[];
   Company_id:any;
   public choosenFile: any;
@@ -23,10 +23,10 @@ export class CompanyEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.adminRegistration.getStateList().subscribe((data: any) => {         //to fetch data of state form firebase,getStateList() is on registration service page
-      this.StateList = data;
-      console.log(data)
-    });
+    // this.adminRegistration.getStateList().subscribe((data: any) => {         //to fetch data of state form firebase,getStateList() is on registration service page
+    //   this.StateList = data;
+    //   console.log(data)
+    // });
 
     this.adminRegistration.getDistrictList().subscribe((data: any) => {         //to fetch data of state form firebase
       this.districtList = data;
@@ -44,7 +44,7 @@ export class CompanyEditComponent implements OnInit {
       CompanyDistrict:[''],
       CompanyAddress:[''],
       Description:[''],
-      
+      fileUrl:['']
 
     });
     this.adminRegistration.getCompanyList().subscribe((data:any)=>{
@@ -53,9 +53,13 @@ export class CompanyEditComponent implements OnInit {
     });
     if(this.Company_id)
     {
+      console.log(this.Company_id);
+      
       this.adminRegistration.getCompanyById(this.Company_id).subscribe((result: any)=>{
         if(result){
           this.CompanyEditForm.patchValue(result);
+          console.log(this.CompanyEditForm);
+          
         }
       });
     }
@@ -65,13 +69,42 @@ export class CompanyEditComponent implements OnInit {
     }
   }
   UpdateCompany(){
+    
+
+    this.adminRegistration.upload(this.choosenFile)
+.then(url => {
+  if (url) {
+    this.CompanyEditForm.patchValue({
+      fileUrl: url
+    })
+
+
     this.adminRegistration.updateCompany(this.Company_id,this.CompanyEditForm.value).then(()=>{
       this.route.navigate(["AdminHomePage/CompanyDetails"])
     });
+  } else {
+    alert("image upload error")
+    }
+    
+    })
+    
+    .catch(err => {
+    // this.loading = false;
+    console.log(err)
+    })
   }
   handleFileInput(event: any) {
     console.log(event.target.files[0])
     this.choosenFile = event.target.files[0]
+    
+  }
+  onChange(event: any) {
+    console.log(this.CompanyEditForm.value.CompanyDistrict);
+    this.adminRegistration.getLocationByDistrict(this.CompanyEditForm.value.CompanyDistrict)
+    .subscribe(res => {
+      console.log(res);
+      this.LocationList = res;
+    })
     
   }
 

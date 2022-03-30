@@ -23,14 +23,21 @@
                 <div class="col-lg-10 col-md-12 ">
                     <div class="card shadow-lg card-1">
                         <div class="card-body inner-card">
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center" >
                                 <div class="col-md-12 col-lg-10 sm-4 col-12">
                                     
-                                  
-                                <ul *ngIf="PostData">
+                                
 
 
-                                    <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+
+                          <form [formGroup]="postdetails" >
+
+<input type="label" formControlName="PostName" readonly>
+
+                                <ul >
+
+
+                                    <li   class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" >
                                         <a  href="job-single.html"></a>
                                         <div class="job-listing-logo">
                                           <img src="/assets/Guest/images/job_logo_2.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
@@ -38,7 +45,8 @@
                             
                                         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                                           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                            <h2>Digital Marketing Director</h2>
+                                            <h2>Test</h2>
+                                            
                                             <strong>Sprint</strong>
                                           </div>
                                           <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
@@ -61,8 +69,9 @@
 
                        
                                     </ul> 
+                                  </form>
                                 
-                          
+                     
                             
                             <div class="row justify-content-center">
                                 <div class="col-md-12 col-lg-10 col-12">

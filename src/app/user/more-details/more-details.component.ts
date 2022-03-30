@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminRegistrationService } from 'src/app/Services/admin-registration.service';
 import { UserSerService } from 'src/app/Services/user-ser.service';
 
 @Component({
@@ -8,38 +10,22 @@ import { UserSerService } from 'src/app/Services/user-ser.service';
   styleUrls: ['./more-details.component.scss']
 })
 export class MoreDetailsComponent implements OnInit {
-
   Post_id: any;
-  PostData:any[]=[]
+   PostList:any[]=[];
 
-  constructor(private route:Router,private router:ActivatedRoute,private userRegistration:UserSerService) {
-    router.params.subscribe(catid =>(this.Post_id=catid['id']));
+
+  constructor(private adminRegistrationService:AdminRegistrationService,private fb:FormBuilder,private router:Router,private route:ActivatedRoute) {
+    route.params.subscribe(catid =>{this.Post_id=catid['id'];})
    }
 
   ngOnInit(): void {
-    this.getPost()
+    this.getCategories();
   }
-  getPost(){
-
-
-
-    this.userRegistration.getPost(this.Post_id).subscribe((result:any)=>{
-      if (result){
-        console.log(result);
-      }
+  getCategories(){
+    this.adminRegistrationService.getPostById(this.Post_id).subscribe((data:any[])=>{
+      this.PostList=data;
+    console.log(this.PostList);
     });
-
-
-
-    
-    
-   /*  console.log(this.Post_id)
-    this.userRegistration.getPost(this.Post_id).subscribe((data:any[])=>{
-    console.log(data);
-      this.PostData=data;
-    });
-    console.log(this.PostData); */
-    
   }
 
 }

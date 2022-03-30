@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProviderSerService } from 'src/app/Services/provider-ser.service';
 
@@ -11,12 +11,19 @@ import { ProviderSerService } from 'src/app/Services/provider-ser.service';
 export class ApplicantViewComponent implements OnInit {
   ApplicationList:any[]=[];
   company_id:any
+  postList:any[]=['']
+  PostControl = new FormControl('');
 
   constructor(private providerRegistration:ProviderSerService,private fb:FormBuilder,private route:Router,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.company_id=localStorage.getItem("CompanyId")
+    this.providerRegistration.getcompanywisepost(this.company_id).subscribe((data: any) => {         //to fetch data of state form firebase
+      this.postList = data;
+      console.log(data)
+    });
 
-    this.getApplication()
+   
   }
   getApplication(){
     this.company_id=localStorage.getItem("CompanyId")
@@ -24,8 +31,13 @@ export class ApplicantViewComponent implements OnInit {
     
     
     console.log(this.company_id)
-    this.providerRegistration.getApplication(this.company_id).then((data:any[])=>(this.ApplicationList=data));
-    console.log(this.ApplicationList.values)
+    this.providerRegistration.getApplication(this.company_id).then((data:any[])=>
+      {
+        this.ApplicationList=data;
+        console.log(this.ApplicationList);
+      }
+      );
+   
   }
   delete(Post_id:any){
     console.log(Post_id);
@@ -40,4 +52,14 @@ export class ApplicantViewComponent implements OnInit {
     }
 
 }
+onChange(event: any) {
+  console.log(this.PostControl.value);
+  this.providerRegistration.getApplication(this.PostControl.value)
+  .then(res => {
+  console.log(res);
+  this.ApplicationList = res;
+  console.log(this.postList);
+  })
+}
+
 }

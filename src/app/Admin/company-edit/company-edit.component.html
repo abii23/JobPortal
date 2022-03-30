@@ -21,20 +21,24 @@
                                     <div class="form-group"> <label for="Date of Starting">Company Started year</label> <input type="date" formControlName="CompanyStartYear" class="form-control" id="time" placeholder=""> </div>
                                     
                                     <div class="form-group"> <label for="State id">Select State</label> 
-                                        <select class="form-control" style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyState">
-                                            <option value="">-- Select Category --</option>
-                                            <option *ngFor="let State of StateList" value="{{ State.id }}">
-                                                {{State.StateName}}
-                                            </option>
-                                        </select>
+                                        
                                     </div>
                                     <div class="form-group"> <label for="District id">Select District</label> 
-                                        <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyDistrict">
-                                            <option value="">-- Select Category --</option>
+                                        <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;"  (change)="onChange($event)" formControlName="CompanyDistrict">
+                                            <option value="">-- Select District --</option>
                                             <option *ngFor="let District of districtList" value="{{District.id}}">
                                                 {{District.DistrictName}}
                                             </option>
                                         </select>
+                                        <div class="form-group"> <label for="District id">Select Location</label> 
+
+                                        <select class="form-control" style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyLocation">
+                                            <option value="">-- Select Location --</option>
+                                            <option *ngFor="let Location of LocationList" value="{{ Location.Location_Id }}">
+                                                {{Location.LocationName}}
+                                            </option>
+                                        </select>
+                                    </div>
                                     </div>
                                     
                                     <div class="form-group">

@@ -62,8 +62,33 @@ export class AdminRegistrationService {
   }
   getSubCategories()
   {
-    const Category=this.afs.collection("Collection_Subcategory").valueChanges({idField:"Subcategory_id"});
-    return Category;
+    // const Category=this.afs.collection("Collection_Subcategory").valueChanges({idField:"Subcategory_id"});
+    // return Category;
+    return new Promise<any[]>((resolve, reject) => {
+      const Location = this.afs
+      .collection<any>("Collection_Subcategory", (ref) => ref.orderBy("SubCategoryName") )
+      .valueChanges({ idField: "SubCategory_id" })
+      .subscribe(prodRes => {
+        this.getCategoryList().subscribe(res => {
+          prodRes.forEach(el => {
+            el.CategoryName = res.find(el1 => el1.id === el.category)?.CategoryName
+          })
+          
+          
+          resolve(prodRes)
+          
+          
+        
+        })
+      })
+    })
+
+
+
+    
+
+
+  
   }
   deleteSubCategory(Subcategory_id:any)
   {
@@ -196,7 +221,7 @@ export class AdminRegistrationService {
       .collection<any>("Collection_post", (ref) => ref.orderBy("PostName"))
       .valueChanges({ idField: "PostId" })
       .subscribe(prodRes => {
-        this.getDistrictList().subscribe(res => {
+        this.getCategoryList().subscribe(res => {
           prodRes.forEach(el => {
             el.category = res.find(el1 => el1.id === el.category)?.categoryname
           })
@@ -287,6 +312,113 @@ export class AdminRegistrationService {
         })
       }
       
+
+
+
+      getPostById(post_id: any) {
+       
+       
+          return this.afs.collection('Collection_Post', (ref) => ref.where(ref.id,
+        "==", post_id))
+        .valueChanges({ idField: "Post_Id" })  
+
+       
+
+
+        
+       
+
+
+
+
+       /*  const productData = this.afs.doc<any>("Collection_category/" + post_id).valueChanges();
+
+        return productData; */
+      }
+
+      getPostList(){
+         
+
+
+        return new Promise<any[]>((resolve, reject) => {
+          const Location = this.afs
+          .collection<any>("Collection_CompanyDetails", (ref) => ref.orderBy("CompanyDistrict") )
+          .valueChanges({ idField: "Company_id" })
+          .subscribe(prodRes => {
+            this.getDistict().subscribe(res => {
+              prodRes.forEach(el => {
+                el.DistrictName = res.find(el1 => el1.id === el.CompanyDistrict)?.DistrictName
+              })
+              
+              
+              resolve(prodRes)
+            })
+            this. getLocationListq().subscribe(res => {
+              prodRes.forEach(el => {
+                el.LocationName = res.find(el1 => el1.id === el.CompanyLocation)?.LocationName
+              })
+              
+              
+              resolve(prodRes)
+            })
+          })
+        })
+
+
+
+        
+
+
+      }
+
+      getDistict()
+      {
+       
+
+        return this.afs.collection<any>("Collection_District").snapshotChanges()
+        .pipe(map((item: any) => {
+          const catData: any[] = [] 
+          if (item) {
+            // console.log(item)
+            item.forEach((el: any) => {
+              catData.push({
+                id: el.payload.doc.id,
+                ...el.payload.doc.data()
+              })
+  
+            })
+          }
+          return catData;
+        }))
+
+
+
+      }
+
+      getLocationListq()
+      {
+       
+
+        return this.afs.collection<any>("Collection_Location").snapshotChanges()
+        .pipe(map((item: any) => {
+          const catData: any[] = [] 
+          if (item) {
+            // console.log(item)
+            item.forEach((el: any) => {
+              catData.push({
+                id: el.payload.doc.id,
+                ...el.payload.doc.data()
+              })
+  
+            })
+          }
+          return catData;
+        }))
+
+
+
+      }
+
     
     }
 
