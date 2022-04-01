@@ -34,7 +34,7 @@ import { YourApplicationComponent } from './user/your-application/your-applicati
 const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 ]},
 {path:'ViewMore/:id',component:ViewMoreComponent},
-{path:'applyDetails',component:ApplicationFormComponent},
+{path:'applyDetails/:id',component:ApplicationFormComponent},
 {path:'ApplicationView',component:YourApplicationComponent},
 {path:'moredetails/:id',component:MoreDetailsComponent},
 

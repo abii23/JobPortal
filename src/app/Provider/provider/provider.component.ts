@@ -10,11 +10,14 @@ import { ProviderSerService } from 'src/app/Services/provider-ser.service';
 export class ProviderComponent implements OnInit {
   company_id: any;
   postList:any[]=[''];
+  company_details: any;
 
   constructor(private fb:FormBuilder,private providerRegistrtaion:ProviderSerService) { }
 
   ngOnInit(): void {
     this.getProviderDetails();
+    const details = localStorage.getItem('company_details') 
+    this.company_details = JSON.parse(details ? details : '[]')
   }
   getProviderDetails(){
     console.log("hello");

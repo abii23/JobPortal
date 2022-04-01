@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+  import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -34,7 +34,7 @@ export class AdminRegistrationService {
       .pipe(map((item: any) => {
         const catData: any[] = []
         if (item) {
-          // console.log(item)
+          //console.log(item)
           item.forEach((el: any) => {
             catData.push({
               id: el.payload.doc.id,

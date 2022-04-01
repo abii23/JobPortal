@@ -150,15 +150,81 @@ export class UserSerService {
       return this.afs.collection('Post', (ref) => ref.where("id",
       "==", post_id))
       .valueChanges({ idField: "post_id" }) */
+
+
+
       return this.afs
       .doc<any>("Collection_Post/" + post_id)
-      .valueChanges(); 
+      .valueChanges({ idField: "post_id" }); 
+
+      // return new Promise<any[]>((resolve, reject) => {
+      //   const Location = this.afs
+      //   .collection<any>("Collection_Post", (ref) => ref.where("id" ,"==", post_id) )
+      //   .valueChanges({ idField: "post_id" })
+      //   .subscribe(prodRes => {
+      //     this.getCompany().subscribe(res => {
+      //       prodRes.forEach(el => {
+      //         el.CompanyName = res.find(el1 => el1.id === el.company_id)?.CompanyName,
+      //         el.fileUrl = res.find(el1 => el1.id === el.company_id)?.fileUrl
+      //       })
+            
+            
+      //       resolve(prodRes)
+      //     })
+      //     this. getLocationListq().subscribe(res => {
+      //       prodRes.forEach(el => {
+      //         el.LocationName = res.find(el1 => el1.id === el.CompanyLocation)?.LocationName
+      //       })
+            
+            
+      //       resolve(prodRes)
+      //     })
+      //   })
+      }
+
+
+      
      
      
 
    
 
 
+    
+    // getLocationListq()
+    //   {
+       
+
+    //     return this.afs.collection<any>("Collection_Location").snapshotChanges()
+    //     .pipe(map((item: any) => {
+    //       const catData: any[] = [] 
+    //       if (item) {
+    //         // console.log(item)
+    //         item.forEach((el: any) => {
+    //           catData.push({
+    //             id: el.payload.doc.id,
+    //             ...el.payload.doc.data()
+    //           })
+  
+    //         })
+    //       }
+    //       return catData;
+    //     }))
+
+
+
+    //   }
+
+    getCompanyData(Company_id:any){
+      
+      return this.afs
+      .doc<any>("Collection_CompanyDetails/" + Company_id).valueChanges({ idField: "id" }); 
+
+      // const productData = this.afs.doc<any>("Collection_CompanyDetails/" + Company_id).valueChanges();
+      // console.log(productData);
+      
+  
+      // return productData;
     }
 
         login() {

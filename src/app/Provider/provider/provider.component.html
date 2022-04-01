@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/assets/Admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <!-- endinject -->assets/
+    <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="/assets/Admin/assets/css/style.css">
     <!-- End layout styles -->
@@ -37,11 +37,11 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="/assets/Admin/assets/images/faces/face15.jpg" alt="">
+                  <img class="img-xs rounded-circle " [src]="company_details.fileUrl" alt="">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                  <h5 class="mb-0 font-weight-normal">{{company_details.CompanyName}}</h5>
                  
                 </div>
               </div>
@@ -238,8 +238,9 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="/assets/Admin/assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <h6 style="margin-right: 5%;color: aliceblue;" ><a [routerLink]="['/GuestHome']">Log Out</a> </h6>
+                    <img class="img-xs rounded-circle"  [src]="company_details.fileUrl" alt="">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{company_details.CompanyName}}</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>

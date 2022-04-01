@@ -30,46 +30,43 @@
 
 
 
-                          <form [formGroup]="postdetails" >
-
-<input type="label" formControlName="PostName" readonly>
 
                                 <ul >
 
 
-                                    <li   class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" >
+                                    <li  class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" >
                                         <a  href="job-single.html"></a>
                                         <div class="job-listing-logo">
-                                          <img src="/assets/Guest/images/job_logo_2.jpg" alt="Free Website Template by Free-Template.co" class="img-fluid">
+                                          <img [src]="" alt="" class="img-fluid">
                                         </div>
                             
                                         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                                           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                            <h2>Test</h2>
+                                            <h2>{{PostData.PostName}}</h2>
                                             
-                                            <strong>Sprint</strong>
+                                            <strong>{{companyData.CompanyName}}</strong>
                                           </div>
                                           <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                                            <span class="icon-room"></span> Overland Park, Kansas 
+                                            <span class="icon-room"></span> Kochi
                                           </div>
                                           <div class="job-listing-meta">
-                                            <span class="badge badge-success">Full Time</span>
+                                            <span class="badge badge-success">{{PostData.JobType}}</span>
                                           </div>
                                         </div>
                                       </li>
 
-                                      <p style="margin-top:20%;">job Description</p>
-                                      <p>job Description here</p>
+                                      <p style="margin-top:20%;font-size: 160%;">Job Description</p>
+                                      <p>{{PostData.Description}}</p>
 
 
                                       <br>
                                       <br><br>
                                       <br>
-                                    <a [routerLink]="['/applyDetails']" style="color: rgb(121, 171, 101);">Apply Now</a>
+                                    <a [routerLink]="['/applyDetails', PostData.post_id]" style="color: rgb(121, 171, 101);">Apply Now</a>
 
                        
                                     </ul> 
-                                  </form>
+                            
                                 
                      
                             

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -69,7 +69,12 @@ export class ProviderSerService {
 
     Providerlogin(username: any, password :any)
     {
-      return this.afs.collection('Collection_CompanyDetails', (ref) => ref.where("CompanyEmail","==", username).where("Password","==",password) ).valueChanges({ idField: "CompanyId" })
+      return this.afs.collection('Collection_CompanyDetails', (ref) => ref.where("CompanyEmail","==", username)
+      .where("Password","==",password) ).valueChanges({ idField: "CompanyId" })
+      .pipe(tap(val => {
+        console.log(val)
+        localStorage.setItem('company_details', JSON.stringify(val?.length ? val[0] : []))
+      }))
 
 
 
@@ -93,9 +98,10 @@ export class ProviderSerService {
     }
     getApplication(Company_id:any)
     {
+      console.log(Company_id)
     return new Promise<any[]>((resolve, reject) => {
       const Location = this.afs
-      .collection<any>("Collection_ApplyDetails")
+      .collection<any>("Collection_ApplyDetails", (ref) => ref.where("Post_id", "==", Company_id))      
       .valueChanges({ idField: "Application_id" })
       .subscribe(prodRes => {
         this.getPost1List().subscribe(res => {

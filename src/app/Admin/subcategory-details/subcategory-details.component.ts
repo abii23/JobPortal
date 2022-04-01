@@ -19,7 +19,7 @@ export class SubcategoryDetailsComponent implements OnInit {
     this.getSubCategories();
   }
   getSubCategories(){
-    this.adminRegistrationService.getSubCategories().then((data:any[])=>(this.SubcategoryList=data));
+    this.adminRegistrationService.getSubCategories().then((data:any[])=>{this.SubcategoryList=data;console.log(this.SubcategoryList)});
     console.log("hello");
     
     console.log(this.SubcategoryList);

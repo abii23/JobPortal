@@ -11,8 +11,10 @@ import { UserSerService } from 'src/app/Services/user-ser.service';
 })
 export class ViewMoreComponent implements OnInit {
   Post_id: any;
-  public PostData:any[]=[];
+  public PostData:any;
   postdetails!:FormGroup;
+  company_id:any
+  public companyData:any;
 
 
   constructor(private route:Router,private router:ActivatedRoute,private userRegistration:UserSerService, private fb:FormBuilder) {
@@ -30,19 +32,26 @@ export class ViewMoreComponent implements OnInit {
 
 
     this.getPost();
+    this.getCompanydata();
   }
   getPost(){
 
+console.log(this.Post_id);
 
 
     this.userRegistration.getPost(this.Post_id).subscribe((result:any)=>{
       if (result){
         this.PostData=result;
-        this.postdetails.patchValue(result);
+
+        // this.postdetails.patchValue(result);
         console.log(this.PostData);
+this.company_id=this.PostData.company_id
+console.log(this.company_id);
+
       }
     });
-
+    
+    
 
 
     
@@ -54,6 +63,22 @@ export class ViewMoreComponent implements OnInit {
     });
     console.log(this.PostData); */
     
+  }
+  getCompanydata()
+  {
+    this.userRegistration.getCompanyData(this.company_id).subscribe((result:any)=>{
+      if(result)
+      {
+        console.log(this.company_id);
+        
+        this.companyData=result;
+        console.log("hello");
+        
+        console.log(this.companyData);
+        
+      }
+    })
+
   }
 
 }

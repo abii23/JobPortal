@@ -27,7 +27,7 @@
                            <div class="card">
                                <div class="card-body"></div>
                                <div class="form-group"> <label for="District id">Select Post</label> 
-                                <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;" [formControl]="PostControl" (change)="onChange($event)"   formControlName="District">
+                                <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;" [formControl]="PostControl" (change)="onChange($event)">
                                     <option value="">-- Select Post--</option>
                                     <option *ngFor="let post of postList" value="{{post.Company_Id}}">
                                         {{post.PostName}}
@@ -64,8 +64,8 @@
                                           <!-- <td>{{cu.CompanyStartYear}}</td> -->
                                           <!-- <td>{{cu.Description}}</td> -->
                                          
-                                          <td> <a [routerLink]="['/AdminHomePage/CompanyEdit',cu.Application_Id]">edit</a></td>
-                                          <td><a [routerLink]="[]" (click)="delete(cu.Application_Id)">Delete</a></td>
+                                          <!-- <td> <a [routerLink]="['/AdminHomePage/CompanyEdit',cu.Application_Id]">edit</a></td> -->
+                                          <!-- <td><a [routerLink]="[]" (click)="delete(cu.Application_Id)">Delete</a></td> -->
                                       </tr>
                                   </tbody>
                               </table>

@@ -28,6 +28,9 @@ Post_id:any
       Education:[''],
       ExpectedSalary:[''],
       Description:[''],
+      email:[''],
+      ContactNum:[''],
+
       User_id:localStorage.getItem("userid"),
       Post_id:[this.Post_id],
 
