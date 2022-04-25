@@ -42,6 +42,7 @@ export class PostRegFormComponent implements OnInit {
       Description:[''],
       JobType:[''],
       Location:[''],
+      LastDate:[''],
       company_id:localStorage.getItem("CompanyId")
     
       

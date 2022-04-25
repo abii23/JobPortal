@@ -15,7 +15,10 @@ export class CompanyRegistrationComponent implements OnInit {
     CompanyForm!:FormGroup
     LocationList:any[]=[];
     districtList:any[]=[''];
+    companyList:any[]=[];
     LocationControl = new FormControl('');
+
+
   constructor(private fb:FormBuilder,private adminRegistrationService:AdminRegistrationService,private route:Router,private router:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class CompanyRegistrationComponent implements OnInit {
       this.districtList = data;
       console.log(data)
     });
+    
 
     this.CompanyForm=this.fb.group({
       CompanyName:[''],
@@ -69,31 +73,57 @@ export class CompanyRegistrationComponent implements OnInit {
   //     this.route.navigate(['AdminHomePage/CategoryDetails'])
   //   })
   // }
+ 
+ 
   
   SaveCompany()
 {
 
-this.adminRegistrationService.upload(this.choosenFile)
-.then(url => {
-  if (url) {
-    this.CompanyForm.patchValue({
-      fileUrl: url
-    })
-
-this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
+  console.log(this.CompanyForm.value.CompanyName);
+  console.log(this.CompanyForm.value.CompanyEmail);
+    this.adminRegistrationService.CheckCompany(this.CompanyForm.value.CompanyName,this.CompanyForm.value.CompanyEmail)
+    .subscribe(res => {
+    console.log(res)
+    this.companyList = res;
+    console.log(this.companyList.length);
+  })
+ if(this.companyList.length<=0)
+ {
+  this.adminRegistrationService.upload(this.choosenFile)
+  .then(url => {
+    if (url) {
+      this.CompanyForm.patchValue({
+        fileUrl: url
+      })
+  
+  this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
+  {
+    this.route.navigate(["/AdminHomePage/CompanyDetails"]);
+  });
+  } else {
+  alert("image upload error")
+  }
+  
+  })
+  
+  .catch(err => {
+  this.loading = false;
+  console.log(err)
+  })
+ 
+ }
+ else
 {
-  this.route.navigate(["/AdminHomePage/CompanyDetails"]);
-});
-} else {
-alert("image upload error")
+ // console.log(this.companyList.length);
+  alert("This company details already exists");
+  
+  
+ 
 }
 
-})
 
-.catch(err => {
-this.loading = false;
-console.log(err)
-})
+   
+  
 
 
 

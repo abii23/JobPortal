@@ -107,6 +107,7 @@ export class ProviderSerService {
         this.getPost1List().subscribe(res => {
           prodRes.forEach(el => {
             el.PostName = res.find(el1 => el1.id === el.Post_id)?.PostName
+          
             
           })
           resolve(prodRes)

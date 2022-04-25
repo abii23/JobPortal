@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProviderSerService } from '../Services/provider-ser.service';
 
@@ -11,7 +11,7 @@ import { ProviderSerService } from '../Services/provider-ser.service';
 export class ProviderLoginComponent implements OnInit {
   ProviderLoginForm!:FormGroup
   productList:any[]=[];
-  emailControl = new FormControl('');
+  emailControl = new FormControl('',Validators.required);
   passwordControl=new  FormControl('');
 
   constructor(private providerService:ProviderSerService,private fb:FormBuilder,private route:Router,private router:ActivatedRoute) { }

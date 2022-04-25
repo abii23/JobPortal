@@ -2,8 +2,7 @@
     <div class="card-body px-sm-4 px-0">
         <div class="row justify-content-center mb-5">
             <div class="col-md-10 col">
-                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Post Registration</h3>
-                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Post you Requirements here and find out great brains with us..!</p>
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Application form</h3>
             </div>
         </div>
         <form [formGroup]="ApplicationForm" >
@@ -14,7 +13,7 @@
                         <div class="card-body inner-card">
                             <div class="row justify-content-center">
                                 <div class="col-md-12 col-lg-10 sm-4 col-12">
-                                    <div class="form-group"><label for="Post name">User Name</label>
+                                    <div class="form-group"><label for="Post name"> Name</label>
                                         <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="UserName"  id="" placeholder="Type  Name"> </div>
                                         <!-- <label for="Description">Category</label>
 
@@ -38,28 +37,9 @@
                                           
                                           <label for="Education Qualification">Education Qualification</label>
                                           <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Education"  id="" placeholder="Enter Qualification"> 
-                                          
-                                          <!-- <label for="Job type">job Type</label>
-                                          <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="JobType">
-                                            <option value="">-- Select Job Type --</option>
-                                            <option value="Part Time">Part Time</option>
-                                            <option value="Full Time">Full time</option>
-                                            <option value="Internship">Internship</option>
-
-
-
-                                            </select> -->
-
-                                          <!-- <label for="Location">location</label>
-
-
-                                            <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Location">
-                                                <option value="">-- Select location --</option>
-                                                <option *ngFor="let location of LocationList" value="{{ location.id }}">
-                                                  {{location.LocationName}}
-                                                </option>
-                                              </select>
-                                             -->
+                                        
+                                          <label for="Expected Salary">Expected Salary</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Expected Salary"  id="" placeholder="Enter Qualification"> 
                                              <label for="Email id">Email id</label>
                                              <input type="email" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="email"  id="" placeholder="Enter email"> 
                         
@@ -79,7 +59,7 @@
                                 <div class="col-md-12 col-lg-10 col-12">
                                     <div class="row justify-content-end mb-5">
                                         <div class="col-lg-4 col-auto ">
-                                            <button type="button" (click)="SavePost()"  class="btn btn-primary btn-block"><small class="font-weight-bold">Add Post</small></button> </div>
+                                            <button type="button" (click)="SavePost()"  class="btn btn-primary btn-block"><small class="font-weight-bold">Apply Now</small></button> </div>
                                         </div>
                                         
                                     </div>

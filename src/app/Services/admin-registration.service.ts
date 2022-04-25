@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
   import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -283,9 +283,7 @@ export class AdminRegistrationService {
     }
     getLocationByDistrict(DistrictId: any) {                                 //select location using district id
       console.log(DistrictId);
-      return this.afs.collection('Collection_Location', (ref) => ref.where("District",
-      "==", DistrictId))
-      .valueChanges({ idField: "Location_Id" })
+      return this.afs.collection('Collection_Location', (ref) => ref.where("District","==",DistrictId)).valueChanges({ idField: "Location_Id" })
       } 
       
 
@@ -418,8 +416,16 @@ export class AdminRegistrationService {
 
 
       }
+      CheckCompany(Name: any, CompanyEmail :any)
+    {
+      return this.afs.collection('Collection_CompanyDetails', (ref) => ref.where("CompanyName","==", Name)
+      .where("CompanyEmail","==",CompanyEmail) ).valueChanges({ idField: "CompanyId" })
+      .pipe(tap(val => {
+        console.log(val)
+      }))
+
 
     
     }
 
-
+  }

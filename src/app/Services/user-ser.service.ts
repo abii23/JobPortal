@@ -58,13 +58,17 @@ export class UserSerService {
       
 
       
-      getPostList(){
+      getPostList(currentdate:any){
          
 
 
           return new Promise<any[]>((resolve, reject) => {
+
+console.log(currentdate);
+
+
             const Location = this.afs
-            .collection<any>("Collection_Post", (ref) => ref.orderBy("PostName") )
+            .collection<any>("Collection_Post", (ref) => ref.where("LastDate",">=",currentdate) )
             .valueChanges({ idField: "post_id" })
             .subscribe(prodRes => {
               this.getCompany().subscribe(res => {
@@ -145,42 +149,44 @@ export class UserSerService {
       
       return this.afs.doc("Collection_user/" +User_id).update(user);
     }
-    getPost(post_id:any){
-    /*   console.log(post_id);
-      return this.afs.collection('Post', (ref) => ref.where("id",
-      "==", post_id))
-      .valueChanges({ idField: "post_id" }) */
+    // getPost(post_id:any){
+    // /*   console.log(post_id);
+    //   return this.afs.collection('Post', (ref) => ref.where("id",
+    //   "==", post_id))
+    //   .valueChanges({ idField: "post_id" }) */
 
 
 
-      return this.afs
-      .doc<any>("Collection_Post/" + post_id)
-      .valueChanges({ idField: "post_id" }); 
+    //   // return this.afs
+    //   // .doc<any>("Collection_Post/" + post_id)
+    //   //.valueChanges({ idField: "post_id" }); 
 
-      // return new Promise<any[]>((resolve, reject) => {
-      //   const Location = this.afs
-      //   .collection<any>("Collection_Post", (ref) => ref.where("id" ,"==", post_id) )
-      //   .valueChanges({ idField: "post_id" })
-      //   .subscribe(prodRes => {
-      //     this.getCompany().subscribe(res => {
-      //       prodRes.forEach(el => {
-      //         el.CompanyName = res.find(el1 => el1.id === el.company_id)?.CompanyName,
-      //         el.fileUrl = res.find(el1 => el1.id === el.company_id)?.fileUrl
-      //       })
+    //   return new Promise<any[]>((resolve, reject) => {
+    //     const Location = this.afs
+    //     .collection<any>("Collection_Post", (ref) => ref.where("id" ,"==", post_id) )
+    //     .valueChanges({ idField: "post_id" })
+    //     .subscribe(prodRes => {
+    //       this.getCompany().subscribe(res => {
+    //         prodRes.forEach(el => {
+    //           el.CompanyName = res.find(el1 => el1.id === el.company_id)?.CompanyName,
+    //           el.fileUrl = res.find(el1 => el1.id === el.company_id)?.fileUrl
+    //         })
             
             
-      //       resolve(prodRes)
-      //     })
-      //     this. getLocationListq().subscribe(res => {
-      //       prodRes.forEach(el => {
-      //         el.LocationName = res.find(el1 => el1.id === el.CompanyLocation)?.LocationName
-      //       })
+    //         resolve(prodRes)
+    //       })
+    //       this. getLocationList().subscribe(res => {
+    //         prodRes.forEach(el => {
+    //           el.LocationName = res.find(el1 => el1.id === el.CompanyLocation)?.LocationName
+    //         })
             
             
-      //       resolve(prodRes)
-      //     })
-      //   })
-      }
+    //       //   resolve(prodRes)
+    //       // })
+    //     })
+    //   }
+    
+
 
 
       
@@ -211,9 +217,49 @@ export class UserSerService {
     //       return catData;
     //     }))
 
+    getPost(Post_id:any){
+      // const productData =
+      // this.afs.doc<any>("Collection_Post/"+Post_id).valueChanges();
+      // console.log(productData);
+      // return productData;
 
+      // const productData= this.afs.collection('Collection_Post',ref=>ref
+      // .where(firebase.firestore.FieldPath.documentId(),"==",Post_id)
+      // ) .valueChanges({ idField: "Post_Id" });
+      // return productData;
+
+
+
+
+      
+        return new Promise<any[]>((resolve, reject) => {
+          const Location = this.afs
+          .collection<any>("Collection_Post", (ref) => ref .where(firebase.firestore.FieldPath.documentId(),"==",Post_id))
+          .valueChanges({ idField: "Post_Id" })
+          .subscribe(prodRes => {
+            this.getCompany().subscribe(res => {
+              prodRes.forEach(el => {
+                el.company_name = res.find(el1 => el1.id === el.company_id)?.CompanyName
+                el.company_logo=res.find(el1 => el1.id === el.company_id)?.fileUrl
+              })
+              resolve(prodRes)
+            })
+          })
+        })
+    
+      
+
+
+
+
+
+
+    }
 
     //   }
+    
+  
+    
 
     getCompanyData(Company_id:any){
       

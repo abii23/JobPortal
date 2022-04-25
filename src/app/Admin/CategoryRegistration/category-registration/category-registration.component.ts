@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminRegistrationService } from 'src/app/Services/admin-registration.service';
 
@@ -15,7 +15,7 @@ export class CategoryRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.CategoryRegistration=this.fb.group({
-      CategoryName:[''],
+      CategoryName:['',Validators.required],
       CategoryDescription:[''],
     })
   }

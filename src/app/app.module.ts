@@ -38,6 +38,11 @@ import { ViewMoreComponent } from './user/view-more/view-more.component';
 import { PostEditComponent } from './Provider/post-edit/post-edit.component';
 import { PostWiseReportComponent } from './Admin/post-wise-report/post-wise-report.component';
 import { MoreDetailsComponent } from './user/more-details/more-details.component';
+import { DatePipe } from '@angular/common';
+import { CategoryReportComponent } from './Admin/category-report/category-report.component';
+import { SubcategoryReportComponent } from './Admin/subcategory-report/subcategory-report.component';
+import { CompanyReportComponent } from './Admin/company-report/company-report.component';
+import { LocationReportComponent } from './Admin/location-report/location-report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +75,10 @@ import { MoreDetailsComponent } from './user/more-details/more-details.component
     PostEditComponent,
     PostWiseReportComponent,
     MoreDetailsComponent,
+    CategoryReportComponent,
+    SubcategoryReportComponent,
+    CompanyReportComponent,
+    LocationReportComponent,
    
   ],
   imports: [
@@ -83,7 +92,9 @@ import { MoreDetailsComponent } from './user/more-details/more-details.component
     HttpClientModule
       
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

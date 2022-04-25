@@ -22,12 +22,14 @@ p {
 
 select:active {
     box-shadow: none !important;
-    outline-width: 0 !important
+    outline-width: 0 !important;
+    background-color: #fff;
 }
 
 select:after {
     box-shadow: none !important;
-    outline-width: 0 !important
+    outline-width: 0 !important;
+    background-color: #fff;
 }
 
 input,
@@ -39,10 +41,11 @@ textarea {
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 14px;
     letter-spacing: 1px;
-    resize: none
+    resize: none;
+    background-color: #fff;
 }
 
 select:focus,
@@ -51,7 +54,8 @@ input:focus {
     border: 1px solid #0f1c91 !important;
     outline-width: 0 !important;
     font-weight: 400;
-    color:#f1f1f1;
+    color:#000000;
+    background-color: rgb(255, 249, 249);
 }
 
 label {
@@ -67,7 +71,8 @@ textarea:focus {
     box-shadow: none !important;
     border: 1px solid #223498;
     outline-width: 0;
-    color: #f1f1f1;
+    color: #000000;
+    background-color: #fff;
 }
 
 button:focus {
@@ -78,7 +83,8 @@ button:focus {
 }
 
 .form-control {
-    height: calc(2em + .75rem + 3px)
+    height: calc(2em + .75rem + 3px);
+    background-color:white
 }
 
 .inner-card {

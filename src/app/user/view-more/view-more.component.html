@@ -24,7 +24,7 @@
                     <div class="card shadow-lg card-1">
                         <div class="card-body inner-card">
                             <div class="row justify-content-center" >
-                                <div class="col-md-12 col-lg-10 sm-4 col-12">
+                                <div class="col-md-12 col-lg-10 sm-4 col-12" *ngFor="let cu of postdata;let i=index;">
                                     
                                 
 
@@ -37,32 +37,38 @@
                                     <li  class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" >
                                         <a  href="job-single.html"></a>
                                         <div class="job-listing-logo">
-                                          <img [src]="" alt="" class="img-fluid">
+                                          <img src="{{cu.company_logo}}" alt="" class="img-fluid">
                                         </div>
                             
                                         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                                           <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                                            <h2>{{PostData.PostName}}</h2>
+                                            <h2>{{cu.PostName}}</h2>
                                             
-                                            <strong>{{companyData.CompanyName}}</strong>
+                                            
+                                            <strong>{{cu.company_name}}</strong>
                                           </div>
-                                          <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+                                          
                                             <span class="icon-room"></span> Kochi
                                           </div>
-                                          <div class="job-listing-meta">
-                                            <span class="badge badge-success">{{PostData.JobType}}</span>
+                                          <div class="badge badge-success">
+                                            <span>{{cu.JobType}}</span>
                                           </div>
-                                        </div>
                                       </li>
 
-                                      <p style="margin-top:20%;font-size: 160%;">Job Description</p>
-                                      <p>{{PostData.Description}}</p>
-
-
+                                      <p style="margin-top:10%">Vacancy : {{cu.Vacancy}}</p>
                                       <br>
-                                      <br><br>
+                                     
+                                      <p>Experience Required : {{cu.Experience}}</p>
                                       <br>
-                                    <a [routerLink]="['/applyDetails', PostData.post_id]" style="color: rgb(121, 171, 101);">Apply Now</a>
+                                     
+                                      <p>Last day to apply : {{cu.LastDate}}</p>
+                                      <p style="margin-top:10%;font-size: 160%;">Job Description</p>
+                                      <p>{{cu.Description}}</p>
+                                      <br>
+                                      <br>
+                                    
+                                     
+                                    <a [routerLink]="['/applyDetails', cu.Post_Id]" style="color: rgb(121, 171, 101);">Apply Now</a>
 
                        
                                     </ul> 

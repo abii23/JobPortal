@@ -114,7 +114,7 @@
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-              <span class="menu-title">Category Report</span>
+              <span class="menu-title">Category view</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -122,69 +122,55 @@
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-              <span class="menu-title"> Sub Category Report</span>
+              <span class="menu-title"> Sub Category view</span>
             </a>
           </li>
 
          
+       
           <!-- <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Form Elements</span>
-            </a>
-          </li> -->
-          <!-- <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-              <span class="menu-title">Applicant Details</span>
-            </a>
-          </li> -->
-          <li class="nav-item menu-items">
             <a class="nav-link" [routerLink]="['/AdminHomePage/PostWise']">
               <span class="menu-icon">
                 <i class="mdi mdi-chart-bar"></i>
               </span>
-              <span class="menu-title">Post Wise report</span>
+              <span class="menu-title">Post Wise view</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item menu-items">
             <a class="nav-link" [routerLink]="['/AdminHomePage/LocationDetails']" >
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
-              <span class="menu-title">Location wise Report</span>
+              <span class="menu-title">Location wise view</span>
             </a>
           </li>
-          <!-- <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <span class="menu-icon">
-                <i class="mdi mdi-security"></i>
-              </span>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-              </ul>
-            </div>
-          </li> -->
+        
           <li class="nav-item menu-items">
             <a class="nav-link" [routerLink]="['/AdminHomePage/CompanyDetails']">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
-              <span class="menu-title"><a  [routerLink]="['/AdminHomePage/CompanyDetails']"></a> Company Wise Report</span>
+              <span class="menu-title"><a  [routerLink]="['/AdminHomePage/CompanyDetails']"></a> Company Wise view</span>
 
             </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title"   >Reports</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" [routerLink]="['/AdminHomePage/CategoryReport']">Category Reports</a></li>
+                <li class="nav-item"> <a class="nav-link" [routerLink]="['/AdminHomePage/SubCategoryReport']" href="pages/ui-features/dropdowns.html">Sub Category reports</a></li>
+                <li class="nav-item"> <a class="nav-link" [routerLink]="['/AdminHomePage/CompanyReport']" href="pages/ui-features/buttons.html">Company wise Reports</a></li>
+                <li class="nav-item"> <a class="nav-link" [routerLink]="['/AdminHomePage/locationRegistration']" href="pages/ui-features/buttons.html">Location wise Report</a></li>
+  
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>
@@ -192,67 +178,14 @@
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
-          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/Admin/assets/images/logo-mini.svg" alt="logo" /></a>
-          </div>
+          
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-              <span class="mdi mdi-menu"></span>
-            </button>
-            <!-- <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="Search products">
-                  <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">Search</a>
-
-                </form>
-              </li>
-             
-              <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-
-
-            </ul> -->
+           
+          
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Add New Company</a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
-                  <h6 class="p-3 mb-0">Projects</h6>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-file-outline text-primary"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Software Development</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-web text-info"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">UI Development</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-layers text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject ellipsis mb-1">Software Testing</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <p class="p-3 mb-0 text-center">See all projects</p>
-                </div>
+                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" [routerLink]="['/AdminHomePage/CompanyRegistration']">+ Add New Company</a>
+               
               </li>
               <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
@@ -290,19 +223,12 @@
                       <p class="preview-subject mb-1">Settings</p>
                     </div>
                   </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-logout text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Log out</p>
-                    </div>
+                  <a> 
+
+                 
+                   
                   </a>
-                  <div class="dropdown-divider"></div>
-                  <p class="p-3 mb-0 text-center">Advanced settings</p>
+                  
                 </div>
               </li>
             </ul>
@@ -321,13 +247,7 @@
                       <router-outlet></router-outlet>
 
                      
-                  
-                      <!-- <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
-                        <span>
-                          <a href="https://www.bootstrapdash.com/product/corona-admin-template/" target="_blank" class="btn btn-outline-light btn-rounded get-started-btn">Upgrade to PRO</a>
-                        </span>
-                      </div> -->
-                   
+               
             
             
            

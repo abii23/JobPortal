@@ -33,12 +33,6 @@
                                             </option>
                                           </select>
                                         
-                                          <label for="Experience">Experience</label>
-                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Experience"  id="" placeholder="Enter Experience"> 
-                                          
-                                          <label for="Vacancy">No. of Vacancy</label>
-                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Vacancy"  id="" placeholder="Enter Vacancy"> 
-                                          
                                           <label for="Job type">job Type</label>
                                           <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="JobType">
                                             <option value="">-- Select Job Type --</option>
@@ -49,16 +43,24 @@
 
 
                                             </select>
+                                            <label for="Location">location</label>
+  
+  
+                                              <select class="form-control"   formControlName="Location">
+                                                  <option value="">-- Select location --</option>
+                                                  <option *ngFor="let location of LocationList" value="{{ location.id }}">
+                                                    {{location.LocationName}}
+                                                  </option>
+                                                </select>
+                                          <label for="Experience">Experience</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Experience"  id="" placeholder="Enter Experience"> 
+                                          
+                                          <label for="Vacancy">No. of Vacancy</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Vacancy"  id="" placeholder="Enter Vacancy"> 
+                                          
+                                            <label for="last date">Enter the last Date</label>
+                                            <input type="date" formControlName="LastDate" class="form-control"  name="" id="">
 
-                                          <label for="Location">location</label>
-
-
-                                            <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Location">
-                                                <option value="">-- Select location --</option>
-                                                <option *ngFor="let location of LocationList" value="{{ location.id }}">
-                                                  {{location.LocationName}}
-                                                </option>
-                                              </select>
                                             
 
                                          

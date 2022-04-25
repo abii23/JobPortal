@@ -32,6 +32,7 @@ export class CompanyEditComponent implements OnInit {
       this.districtList = data;
       console.log(data)
     });
+   
 
 
     this.CompanyEditForm=this.fb.group({
@@ -42,9 +43,11 @@ export class CompanyEditComponent implements OnInit {
       CompanyContactNumber:[''],
       CompanyState:[''],
       CompanyDistrict:[''],
+      CompanyLocation:[''],
       CompanyAddress:[''],
       Description:[''],
-      fileUrl:['']
+      fileUrl:[''],
+      Password:['']
 
     });
     this.adminRegistration.getCompanyList().subscribe((data:any)=>{
@@ -68,6 +71,10 @@ export class CompanyEditComponent implements OnInit {
       alert("failed");
     }
   }
+  // getLocation(){
+  //   this.adminRegistration.getLocationById(this.CompanyEditForm.value.CompanyDistrict).subscribe((data:any[])=>(this.LocationList=data));
+  // }
+
   UpdateCompany(){
     
 

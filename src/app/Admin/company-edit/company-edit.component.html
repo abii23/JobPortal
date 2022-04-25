@@ -2,57 +2,54 @@
     <div class="card-body px-sm-4 px-0">
         <div class="row justify-content-center mb-5">
             <div class="col-md-10 col">
-                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Company Registration</h3>
-                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Register you Company here and find out great brains with us..!</p>
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Company Updation</h3>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left"> Update you Company here and find out great brains with us..!</p>
             </div>
         </div>
         <form [formGroup]="CompanyEditForm">
-
             <div class="row justify-content-center round">
                 <div class="col-lg-10 col-md-12 ">
                     <div class="card shadow-lg card-1">
                         <div class="card-body inner-card">
                             <div class="row justify-content-center">
                                 <div class="col-lg-5 col-md-6 col-sm-12">
-                                    <div class="form-group"><label for="Company Name">Company Name</label><input type="text" formControlName="CompanyName" class="form-control" id="first-name" placeholder="Type your Name"> </div>
-                                    <div class="form-group"> <label for="Company email">Company email</label> <input type="text" formControlName="CompanyEmail" class="form-control" id="Mobile-Number" placeholder=""> </div>
+                                    <div class="form-group"><label for="Company Name"> Name</label><input type="text" formControlName="CompanyName" class="form-control" id="first-name" placeholder="Type Company Name"> </div>
+                                   
                                     
-                                    
-                                    <div class="form-group"> <label for="Date of Starting">Company Started year</label> <input type="date" formControlName="CompanyStartYear" class="form-control" id="time" placeholder=""> </div>
-                                    
-                                    <div class="form-group"> <label for="State id">Select State</label> 
-                                        
-                                    </div>
                                     <div class="form-group"> <label for="District id">Select District</label> 
-                                        <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;"  (change)="onChange($event)" formControlName="CompanyDistrict">
+                                        <select class="form-control" class="form-control" (change)="onChange($event)"  formControlName="CompanyDistrict">
                                             <option value="">-- Select District --</option>
                                             <option *ngFor="let District of districtList" value="{{District.id}}">
                                                 {{District.DistrictName}}
                                             </option>
                                         </select>
-                                        <div class="form-group"> <label for="District id">Select Location</label> 
-
-                                        <select class="form-control" style="color: rgb(255, 255, 255);background-color: 2A3038;"  formControlName="CompanyLocation">
+                                    </div>
+                                    <div class="form-group"> <label for="State id">Select Location</label> 
+                                        <select class="form-control"  formControlName="CompanyLocation">
                                             <option value="">-- Select Location --</option>
                                             <option *ngFor="let Location of LocationList" value="{{ Location.Location_Id }}">
                                                 {{Location.LocationName}}
                                             </option>
                                         </select>
                                     </div>
-                                    </div>
                                     
                                     <div class="form-group">
-                                        <div class="form-group"> <label for="Company Contact number">Company Contact number</label> <input type="text" formControlName="CompanyContactNumber" class="form-control" id="Mobile-Number" placeholder=""> </div>
-                                        <label for="Company Address">Company Address</label> <textarea formControlName="CompanyAddress" rows="10" cols="30" class="f"  style="color: rgb(252, 252, 252);background-color: #2A3038;" placeholder="enter Description"></textarea> </div>
+                                        <label for="Company Address">Address</label> <textarea formControlName="CompanyAddress" rows="10" cols="30" class="f"   placeholder="enter Company Address"></textarea> </div>
+                                        <div class="form-group"> <label for="Date of Starting"> Started year</label> <input type="date" formControlName="CompanyStartYear" class="form-control" id="time" placeholder=""> </div>
+                                        <div class="form-group"> <label for="Company email">email</label> <input type="text" formControlName="CompanyEmail" class="form-control" id="" placeholder="Enter  Company email"> </div>
+                                    
+                                        <div class="form-group"> <label for="Company Password">Password</label> <input type="password" formControlName="Password" class="form-control" id="" placeholder=""> </div>
+                                        <div class="form-group"> <label for="Company Contact number"> Contact number</label> <input type="text" formControlName="CompanyContactNumber" class="form-control" id="Mobile-Number" placeholder="enter Phone Number"> </div>
+
+                                        <div class="form-group"> <label for="Company Photo">Company Photo</label> 
+                                            <input type="file"  (change)="handleFileInput($event)" class="form-control" id="" placeholder=""> </div>
+            
+                                        
+                                        <label for="Description">Description</label> <textarea formControlName="Description" rows="10" cols="30" class="f"   placeholder="enter Description"></textarea> </div>
                                         
                                         
-                                        <label for="Description">Description</label> <textarea formControlName="Description" rows="10" cols="30" class="f"  style="color: rgb(252, 252, 252);background-color: #2A3038;" placeholder="enter Description"></textarea> </div>
                                         
-                                        <div class=""> <label for="Company Photo">Company Photo</label> 
-                                            <input type="file"  (change)="handleFileInput($event)" class="form-control" id="" placeholder=""> 
-                                        </div>
                                         
-                                     
                                         <!-- <div class="form-group"><label for="skill">Required Skills</label> <input type="text" class="form-control" id="skill" placeholder=""> </div>
                                         </div>
                                         <div class="col-lg-5 col-md-6 col-sm-12">

@@ -14,59 +14,51 @@ export class ViewMoreComponent implements OnInit {
   public PostData:any;
   postdetails!:FormGroup;
   company_id:any
+  public postdata: any[]=[]
   public companyData:any;
 
 
   constructor(private route:Router,private router:ActivatedRoute,private userRegistration:UserSerService, private fb:FormBuilder) {
     router.params.subscribe(catid =>(this.Post_id=catid['id']));
+
    }
 
   ngOnInit(): void {
-
-
     this.postdetails=this.fb.group({
-      PostName:['']
-
-
+     
     })
 
-
-    this.getPost();
-    this.getCompanydata();
+    console.log(this.Post_id);
+   this.getPost();
+   // this.getCompanydata();
   }
   getPost(){
-
-console.log(this.Post_id);
-
-
-    this.userRegistration.getPost(this.Post_id).subscribe((result:any)=>{
+    console.log(this.Post_id);
+    this.userRegistration.getPost(this.Post_id).then((result:any)=>{
       if (result){
-        this.PostData=result;
-
+        // console.log("hi")
+       // this.PostData=result;
+       this.postdata=result;
         // this.postdetails.patchValue(result);
-        console.log(this.PostData);
-this.company_id=this.PostData.company_id
-console.log(this.company_id);
+        console.log(this.postdata);
+// this.company_id=this.PostData.company_id
+// console.log(this.company_id);
 
       }
     });
-    
-    
-
-
-    
-    
    /*  console.log(this.Post_id)
     this.userRegistration.getPost(this.Post_id).subscribe((data:any[])=>{
     console.log(data);
       this.PostData=data;
     });
     console.log(this.PostData); */
-    
+    // this.getCompanydata();
   }
   getCompanydata()
   {
-    this.userRegistration.getCompanyData(this.company_id).subscribe((result:any)=>{
+
+    console.log(this.PostData.value.company_id);
+    this.userRegistration.getCompanyData(this.PostData.company_id).subscribe((result:any)=>{
       if(result)
       {
         console.log(this.company_id);

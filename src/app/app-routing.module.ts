@@ -5,9 +5,11 @@ import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { CategoryDetailsComponent } from './Admin/category-details/category-details.component';
 import { CategoryEditComponent } from './Admin/category-edit/category-edit.component';
+import { CategoryReportComponent } from './Admin/category-report/category-report.component';
 import { CategoryRegistrationComponent } from './Admin/CategoryRegistration/category-registration/category-registration.component';
 import { CompanyDetailsComponent } from './Admin/company-details/company-details.component';
 import { CompanyEditComponent } from './Admin/company-edit/company-edit.component';
+import { CompanyReportComponent } from './Admin/company-report/company-report.component';
 import { CompanyRegistrationComponent } from './Admin/CompanyRegistraionForm/company-registration/company-registration.component';
 import { EditSubcategoryComponent } from './Admin/edit-subcategory/edit-subcategory.component';
 import { LocationEditComponent } from './Admin/location-edit/location-edit.component';
@@ -16,6 +18,7 @@ import { LocationViewComponent } from './Admin/location-view/location-view.compo
 import { PostWiseReportComponent } from './Admin/post-wise-report/post-wise-report.component';
 import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
 import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component';
+import { SubcategoryReportComponent } from './Admin/subcategory-report/subcategory-report.component';
 import { GuestHomeComponent } from './Guest/guest-home/guest-home.component';
 import { LoginFormComponent } from './Guest/login-form/login-form.component';
 import { ProviderLoginComponent } from './provider-login/provider-login.component';
@@ -54,6 +57,10 @@ const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 {path:'LocationDetails',component:LocationViewComponent},
 {path:'LocationEdit/:id',component:LocationEditComponent},
 {path:'PostWise',component:PostWiseReportComponent},
+{path:'CategoryReport',component:CategoryReportComponent},
+{path:'SubCategoryReport',component:SubcategoryReportComponent},
+{path:'CompanyReport',component:CompanyReportComponent},
+{path:'LocationReport',component:LocationRegistrationComponent}
 
 
 ]},

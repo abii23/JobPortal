@@ -46,6 +46,7 @@ export class PostEditComponent implements OnInit {
       Description:[''],
       JobType:[''],
       Location:[''],
+      LastDate:[''],
       company_id:localStorage.getItem("CompanyId")
     
       
