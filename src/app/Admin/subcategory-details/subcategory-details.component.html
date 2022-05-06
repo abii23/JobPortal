@@ -49,7 +49,7 @@
                                           <td>{{cu.SubCategoryName}}</td>
                                           <td>{{cu.SubCategoryDescription}}</td>
                                          
-                                          <td> <a [routerLink]="['/AdminHomePage/SubCategoryEdit',cu.Subcategory_id]">edit</a></td>
+                                          <td> <a [routerLink]="['/AdminHomePage/SubCategoryEdit',cu.SubCategory_id]">edit</a></td>
                                           <td><a [routerLink]="[]" (click)="delete(cu.Subcategory_id)">Delete</a></td>
                                       </tr>
                                   </tbody>

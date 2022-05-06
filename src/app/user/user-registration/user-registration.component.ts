@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserSerService } from 'src/app/Services/user-ser.service';
@@ -15,6 +15,7 @@ export class UserRegistrationComponent implements OnInit {
     userRegForm!:FormGroup
     LocationControl = new FormControl('');
     user_id:any
+  savestatus=false;
 
     
 
@@ -33,12 +34,12 @@ export class UserRegistrationComponent implements OnInit {
 
     this.userRegForm=this.fb.group({
    
-      UserName:[''],
+      UserName:['',Validators.required],
     UserDistrict:[''],
     UserLocation:[''],
-    ContactNum:[''],
-    Address:[''],
-    Qualification:[''],
+    ContactNum:['',Validators.required],
+    Address:['',Validators.required],
+    Qualification:['',Validators.required],
   })
 
    
@@ -69,12 +70,21 @@ export class UserRegistrationComponent implements OnInit {
       
 
   onSubmit(){
+
+    if(!this.userRegForm.valid)
+    {
+      this.savestatus=true
+      return;
+    }
+    else
+    {
     this.user_id=localStorage.getItem("userid"),
     console.log(this.user_id)
     this.UserRegistrationService.updateUser(this.user_id,this.userRegForm.value).then(()=>{
       this.router.navigate(["/user"])
     });
   }
+}
   }
 
 

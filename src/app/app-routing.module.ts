@@ -14,6 +14,7 @@ import { CompanyRegistrationComponent } from './Admin/CompanyRegistraionForm/com
 import { EditSubcategoryComponent } from './Admin/edit-subcategory/edit-subcategory.component';
 import { LocationEditComponent } from './Admin/location-edit/location-edit.component';
 import { LocationRegistrationComponent } from './Admin/location-registration/location-registration.component';
+import { LocationReportComponent } from './Admin/location-report/location-report.component';
 import { LocationViewComponent } from './Admin/location-view/location-view.component';
 import { PostWiseReportComponent } from './Admin/post-wise-report/post-wise-report.component';
 import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
@@ -60,7 +61,7 @@ const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 {path:'CategoryReport',component:CategoryReportComponent},
 {path:'SubCategoryReport',component:SubcategoryReportComponent},
 {path:'CompanyReport',component:CompanyReportComponent},
-{path:'LocationReport',component:LocationRegistrationComponent}
+{path:'LocationReport',component:LocationReportComponent}
 
 
 ]},

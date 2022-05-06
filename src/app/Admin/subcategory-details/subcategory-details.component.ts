@@ -26,6 +26,8 @@ export class SubcategoryDetailsComponent implements OnInit {
     
   }
   delete(Subcategory_id:any){
+    console.log(Subcategory_id);
+    
     if(confirm("Are you sure you want to delete this employee record?")){
       this.adminRegistrationService.deleteSubCategory(Subcategory_id).then(()=>
       {

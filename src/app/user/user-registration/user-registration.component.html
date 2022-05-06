@@ -16,6 +16,8 @@
                                 <div class="col-md-12 col-lg-10 sm-4 col-12">
                                     <div class="form-group"><label for="Seeker name"> Name</label>
                                         <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="UserName"  id="" placeholder="Enter Name"> </div>
+                                        <label *ngIf="userRegForm.controls['UserName'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;">*Enter valid data</label>
+                                            <br>
                                         <label for="District">District</label>
                                             <select class="form-control" (change)="onChange($event)"  formControlName="UserDistrict">
                                                 <option value="">-- Select District --</option>
@@ -51,7 +53,8 @@
                                         
                                           <label for="Contact Number">Contact Number</label>
                                           <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="ContactNum"  id="" placeholder="Enter Contact Number"> 
-                                          
+                                          <label *ngIf="userRegForm.controls['ContactNum'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter valid data</label>
+<br>
                                           <!-- <input  type="radio"  style="margin-left:-10%;display: flex;" name="flexRadioDefault" id="flexRadioDefault1">
                                           <label for="Gender">Male</label>
                                         
@@ -65,9 +68,12 @@
 
                                           <label for="Qualification">Qualification</label>
                                           <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Qualification"  id="" placeholder="Enter Qualification"> 
-                                          
+                                          <label *ngIf="userRegForm.controls['Qualification'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;">*Enter valid data</label>
+<br>
                                           <label for="Address">Address</label>
                                           <textarea name="" id="" formControlName="Address" cols="20" rows="10"></textarea>
+                                          <label *ngIf="userRegForm.controls['Address'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter Password</label>
+<br>
 
                                          
                                     </div>

@@ -11,6 +11,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 export class SubCategoryComponent implements OnInit {
   subCategory!:FormGroup
   CategoryList:any[]=[];
+  savestatus=false;
 
   constructor(private route:Router,private adminRegistrationService:AdminRegistrationService,private fb:FormBuilder,router:ActivatedRoute) { 
     
@@ -31,11 +32,18 @@ export class SubCategoryComponent implements OnInit {
      })
   }
   SaveSubCategory(){
+    if(!this.subCategory.valid)
+    {
+      this.savestatus=true
+      return
+    }
+    else
+    {
     this.adminRegistrationService.SaveSubCategory(this.subCategory.value).then(()=>
     {
       this.route.navigate(['AdminHomePage/SubCategoryDetails'])
     })
   }
 
-
+  }
 }

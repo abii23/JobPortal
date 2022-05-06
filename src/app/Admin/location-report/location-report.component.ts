@@ -55,8 +55,6 @@ export class LocationReportComponent implements OnInit {
       (error:any)=>console.error(error)
       );
     }
-  
-
-}
+  }
 
 }

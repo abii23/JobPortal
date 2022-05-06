@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProviderSerService } from 'src/app/Services/provider-ser.service';
 
@@ -13,6 +13,7 @@ export class PostRegFormComponent implements OnInit {
   CategoryList:any[]=[''];
   SubCategoryList:any[]=[''];
   LocationList:any[]=[''];
+  savestatus=false;
  
   
   
@@ -34,7 +35,7 @@ export class PostRegFormComponent implements OnInit {
     });
    
     this.postReg=this.fb.group({
-      PostName:[''],
+      PostName:['',Validators.required],
       // Category:[''],
       SubCategory:[''],
       Experience:[''],
@@ -50,11 +51,20 @@ export class PostRegFormComponent implements OnInit {
     })
   }
   SavePost(){
+
+    if(!this.postReg.valid)
+    {
+      this.savestatus=true
+      return;
+    }
+    else
+    {
    
     this.providerRegistration.SavePost(this.postReg.value).then(()=>
     {
       this.route.navigate(['Provider/postView'])
     })
   }
+}
 
 }

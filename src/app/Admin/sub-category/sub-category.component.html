@@ -32,7 +32,7 @@
                     
                                     <div class="form-group"><label for="first-name">Sub Category Name</label>
                                         <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="SubCategoryName"  id="" placeholder="Type sub Category Name"> </div>
-                                    
+                                        <label *ngIf="subCategory.controls['SubCategoryName'].errors['required'] && savestatus" class="text-danger">*</label>
                                     <label for="Description">Description</label>
                                     <textarea name="" id="" formControlName="SubCategoryDescription" cols="30" rows="10"></textarea>
                                     

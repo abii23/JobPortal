@@ -10,6 +10,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 })
 export class CategoryRegistrationComponent implements OnInit {
   CategoryRegistration!:FormGroup
+  savestatus=false;
 
   constructor(private AdminRegistrationService:AdminRegistrationService ,private fb:FormBuilder,private route:Router) { }
 
@@ -20,10 +21,19 @@ export class CategoryRegistrationComponent implements OnInit {
     })
   }
   SaveCategory(){
-    this.AdminRegistrationService.SaveCategory(this.CategoryRegistration.value).then(()=>
+    
+    if(!this.CategoryRegistration.valid)
     {
-      this.route.navigate(['AdminHomePage/CategoryDetails'])
-    })
+      this.savestatus=true
+      return;
+    }
+    else
+    {
+      this.AdminRegistrationService.SaveCategory(this.CategoryRegistration.value).then(()=>
+      {
+        this.route.navigate(['AdminHomePage/CategoryDetails'])
+      })
+    }
   }
 
 }

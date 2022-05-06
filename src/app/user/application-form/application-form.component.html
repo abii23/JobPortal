@@ -15,6 +15,8 @@
                                 <div class="col-md-12 col-lg-10 sm-4 col-12">
                                     <div class="form-group"><label for="Post name"> Name</label>
                                         <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="UserName"  id="" placeholder="Type  Name"> </div>
+                                        <label *ngIf="ApplicationForm.controls['UserName'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter valid data</label>
+<br>
                                         <!-- <label for="Description">Category</label>
 
                                         <select class="form-control" style="color: rgb(0, 0, 0);background-color: aliceblue;"  formControlName="Category">
@@ -34,18 +36,24 @@
                                         
                                           <label for="Experience">Work Experience</label>
                                           <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Experience"  id="" placeholder="Enter Experience"> 
-                                          
+                                          <label *ngIf="ApplicationForm.controls['Experience'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter valid data</label>
+<br>
                                           <label for="Education Qualification">Education Qualification</label>
                                           <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Education"  id="" placeholder="Enter Qualification"> 
-                                        
+                                          <label *ngIf="ApplicationForm.controls['Education'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter valid data</label>
+<br>
                                           <label for="Expected Salary">Expected Salary</label>
-                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="Expected Salary"  id="" placeholder="Enter Qualification"> 
-                                             <label for="Email id">Email id</label>
+                                          <input type="text" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="ExpectedSalary"  id="" placeholder="Enter Qualification"> 
+                                          <label *ngIf="ApplicationForm.controls['ExpectedSalary'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter valid data</label>
+  <br>
+                                          <label for="Email id">Email id</label>
                                              <input type="email" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="email"  id="" placeholder="Enter email"> 
-                        
+                                             <label *ngIf="ApplicationForm.controls['email'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter valid data</label>
+<br>
                                              <label for="Contact Number">Contact Number</label>
                                              <input type="number" style="color: rgb(0, 0, 0);background-color: aliceblue;" class="form-control" formControlName="ContactNum"  id="" placeholder="Enter contact Number"> 
-                                         
+                                             <label *ngIf="ApplicationForm.controls['ContactNum'].errors['required'] && savestatus" class="text-danger" style="font-size: 10px;" >*Enter Password</label>
+<br>
                                           <label for="Description">Description</label>
                                           <textarea name="" id="" formControlName="Description" cols="30" rows="10"></textarea>
 

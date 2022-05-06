@@ -13,6 +13,7 @@ export class ProviderLoginComponent implements OnInit {
   productList:any[]=[];
   emailControl = new FormControl('',Validators.required);
   passwordControl=new  FormControl('');
+  savestatus= false;
 
   constructor(private providerService:ProviderSerService,private fb:FormBuilder,private route:Router,private router:ActivatedRoute) { }
 
@@ -22,6 +23,7 @@ export class ProviderLoginComponent implements OnInit {
     })
   }
   onsubmit() {
+
     console.log(this.ProviderLoginForm.value)
     this.providerService.Providerlogin(this.emailControl.value, this.passwordControl.value)
     .subscribe(res => {
@@ -39,5 +41,6 @@ else
 
 
     })
-    } 
+     
+  }
 }

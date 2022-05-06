@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserSerService } from 'src/app/Services/user-ser.service';
 
@@ -11,6 +11,7 @@ import { UserSerService } from 'src/app/Services/user-ser.service';
 export class ApplicationFormComponent implements OnInit {
 ApplicationForm!:FormGroup
 Post_id:any
+  savestatus= false;
 
 
   constructor(private fb:FormBuilder,private route:Router,private userRegistration:UserSerService,router:ActivatedRoute)
@@ -23,13 +24,13 @@ Post_id:any
 
  
     this.ApplicationForm=this.fb.group({
-      UserName:[''],
-      Experience:[''],
-      Education:[''],
-      ExpectedSalary:[''],
+      UserName:['',Validators.required],
+      Experience:['',Validators.required],
+      Education:['',Validators.required],
+      ExpectedSalary:['',Validators.required],
       Description:[''],
-      email:[''],
-      ContactNum:[''],
+      email:['',Validators.required],
+      ContactNum:['',Validators.required],
 
       User_id:localStorage.getItem("userid"),
       Post_id:[this.Post_id],
@@ -40,10 +41,19 @@ Post_id:any
     console.log(this.Post_id);
   }
   SavePost(){
+
+    if(!this.ApplicationForm.valid)
+    {
+      this.savestatus=true
+      return;
+    }
+    else
+    {
     this.userRegistration.SavePost(this.ApplicationForm.value).then(()=>
     {
       this.route.navigate(['/user'])
     })
   }
 
+}
 }

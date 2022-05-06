@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegistrationService } from 'src/app/Services/admin-registration.service';
 
@@ -9,6 +9,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
   styleUrls: ['./company-registration.component.scss']
 })
 export class CompanyRegistrationComponent implements OnInit {
+  savestatus=false;
   public choosenFile: any;
   public loading = false;
    
@@ -17,6 +18,7 @@ export class CompanyRegistrationComponent implements OnInit {
     districtList:any[]=[''];
     companyList:any[]=[];
     LocationControl = new FormControl('');
+  
 
 
   constructor(private fb:FormBuilder,private adminRegistrationService:AdminRegistrationService,private route:Router,private router:ActivatedRoute) { }
@@ -32,15 +34,15 @@ export class CompanyRegistrationComponent implements OnInit {
     
 
     this.CompanyForm=this.fb.group({
-      CompanyName:[''],
-      CompanyEmail:[''],
+      CompanyName:['',Validators.required],
+      CompanyEmail:['',Validators.required],
       CompanyStartYear:[''],
-      CompanyContactNumber:[''],
-      CompanyLocation:[''],
+      CompanyContactNumber:['',Validators.required],
       CompanyDistrict:[''],
-      CompanyAddress:[''],
+      CompanyLocation:[''],
+      CompanyAddress:['',Validators.required],
       Description:[''],
-      Password:[''],
+      Password:['',Validators.required],
       fileUrl:['']
 
 
@@ -78,7 +80,13 @@ export class CompanyRegistrationComponent implements OnInit {
   
   SaveCompany()
 {
-
+  if(!this.CompanyForm.valid)
+  {
+    this.savestatus=true
+    return
+  }
+  else
+  {
   console.log(this.CompanyForm.value.CompanyName);
   console.log(this.CompanyForm.value.CompanyEmail);
     this.adminRegistrationService.CheckCompany(this.CompanyForm.value.CompanyName,this.CompanyForm.value.CompanyEmail)
@@ -123,7 +131,7 @@ export class CompanyRegistrationComponent implements OnInit {
 
 
    
-  
+}
 
 
 
