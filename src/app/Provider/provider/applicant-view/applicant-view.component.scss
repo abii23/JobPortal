@@ -39,9 +39,9 @@ textarea {
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
-    background-color: #f7faff;
+    // background-color: #f7faff;
     font-size: 14px;
-    color: #000;
+    color:ced1d9;
     letter-spacing: 1px;
     resize: none
 }
@@ -68,6 +68,7 @@ textarea:focus {
     box-shadow: none !important;
     border: 1px solid #223498;
     outline-width: 0;
+    color: ced1d9;
     
     
 }

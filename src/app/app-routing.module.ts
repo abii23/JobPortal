@@ -16,6 +16,8 @@ import { LocationEditComponent } from './Admin/location-edit/location-edit.compo
 import { LocationRegistrationComponent } from './Admin/location-registration/location-registration.component';
 import { LocationReportComponent } from './Admin/location-report/location-report.component';
 import { LocationViewComponent } from './Admin/location-view/location-view.component';
+import { LocationWiseCompanyComponent } from './Admin/location-wise-company/location-wise-company.component';
+import { LocationWiseUserComponent } from './Admin/location-wise-user/location-wise-user.component';
 import { PostWiseReportComponent } from './Admin/post-wise-report/post-wise-report.component';
 import { SubCategoryComponent } from './Admin/sub-category/sub-category.component';
 import { SubcategoryDetailsComponent } from './Admin/subcategory-details/subcategory-details.component';
@@ -61,7 +63,9 @@ const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
 {path:'CategoryReport',component:CategoryReportComponent},
 {path:'SubCategoryReport',component:SubcategoryReportComponent},
 {path:'CompanyReport',component:CompanyReportComponent},
-{path:'LocationReport',component:LocationReportComponent}
+{path:'LocationReport',component:LocationReportComponent},
+{path:'CompanyLocationReport',component:LocationWiseCompanyComponent},
+{path:'LocationWiseUser',component:LocationWiseUserComponent}
 
 
 ]},

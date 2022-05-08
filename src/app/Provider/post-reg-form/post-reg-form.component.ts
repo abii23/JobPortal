@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,11 +15,11 @@ export class PostRegFormComponent implements OnInit {
   SubCategoryList:any[]=[''];
   LocationList:any[]=[''];
   savestatus=false;
- 
+ current_date:Date;
   
   
 
-  constructor(private fb:FormBuilder,private route:Router,private router:ActivatedRoute,private providerRegistration:ProviderSerService) { }
+  constructor(private datepipe:DatePipe, private fb:FormBuilder,private route:Router,private router:ActivatedRoute,private providerRegistration:ProviderSerService) { }
 
   ngOnInit(): void {
     this.providerRegistration.getCategoryList().subscribe((data: any) => {
@@ -44,8 +45,8 @@ export class PostRegFormComponent implements OnInit {
       JobType:[''],
       Location:[''],
       LastDate:[''],
-      company_id:localStorage.getItem("CompanyId")
-    
+      company_id:localStorage.getItem("CompanyId"),
+    registered_date:this.datepipe.transform(new Date().toLocaleDateString(),"yyyy-MM-dd")
       
 
     })

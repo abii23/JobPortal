@@ -4,15 +4,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegistrationService } from 'src/app/Services/admin-registration.service';
 
 @Component({
-  selector: 'app-location-report',
-  templateUrl: './location-report.component.html',
-  styleUrls: ['./location-report.component.scss']
+  selector: 'app-location-wise-user',
+  templateUrl: './location-wise-user.component.html',
+  styleUrls: ['./location-wise-user.component.scss']
 })
-export class LocationReportComponent implements OnInit {
+export class LocationWiseUserComponent implements OnInit {
 
   LocationList:any[]=[''];
   districtList:any[]=[''];
   DistrictControl = new FormControl('');
+
   count:any
  
   constructor(private adminRegistration:AdminRegistrationService,private route:Router,private router:ActivatedRoute,private fb:FormBuilder) { }
@@ -31,32 +32,11 @@ export class LocationReportComponent implements OnInit {
 
   onChange(event: any) {
     console.log(this.DistrictControl.value);
-    this.adminRegistration.getProductByCategory(this.DistrictControl.value)
+    this.adminRegistration.getUserByLocation(this.DistrictControl.value)
     .subscribe(res => {
     console.log(res);
     this.LocationList = res;
     this.count=this.LocationList.length;
     })
-    
-    }
-    
-
-
-
-
-
-
-
-  delete(Location_id:any){
-    console.log(Location_id)
-    if(confirm("Are you sure you want to delete this Location?")){
-      this.adminRegistration.deleteLocation(Location_id).then(()=>
-      {
-      
-      },
-      (error:any)=>console.error(error)
-      );
-    }
   }
-
 }

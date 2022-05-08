@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegistrationService } from 'src/app/Services/admin-registration.service';
 
 @Component({
-  selector: 'app-location-report',
-  templateUrl: './location-report.component.html',
-  styleUrls: ['./location-report.component.scss']
+  selector: 'app-location-wise-company',
+  templateUrl: './location-wise-company.component.html',
+  styleUrls: ['./location-wise-company.component.scss']
 })
-export class LocationReportComponent implements OnInit {
+export class LocationWiseCompanyComponent implements OnInit {
 
   LocationList:any[]=[''];
   districtList:any[]=[''];
@@ -31,7 +31,7 @@ export class LocationReportComponent implements OnInit {
 
   onChange(event: any) {
     console.log(this.DistrictControl.value);
-    this.adminRegistration.getProductByCategory(this.DistrictControl.value)
+    this.adminRegistration.getCompanyByLocation(this.DistrictControl.value)
     .subscribe(res => {
     console.log(res);
     this.LocationList = res;

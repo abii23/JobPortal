@@ -51,7 +51,7 @@ export class ProviderSerService {
   getPost(Company_id:any)
   {
     console.log(Company_id);
-      return this.afs.collection('Collection_Post', (ref) => ref.where("company_id", "==", Company_id)) .valueChanges({ idField: "Post_id" })
+      return this.afs.collection('Collection_Post', (ref) => ref.where("company_id", "==", Company_id).orderBy("registered_date","desc")) .valueChanges({ idField: "Post_id" })
   }
 
   deletePost(Post_id:any)

@@ -94,40 +94,44 @@ export class CompanyRegistrationComponent implements OnInit {
     console.log(res)
     this.companyList = res;
     console.log(this.companyList.length);
-  })
- if(this.companyList.length<=0)
- {
-  this.adminRegistrationService.upload(this.choosenFile)
-  .then(url => {
-    if (url) {
-      this.CompanyForm.patchValue({
-        fileUrl: url
-      })
-  
-  this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
-  {
-    this.route.navigate(["/AdminHomePage/CompanyDetails"]);
-  });
-  } else {
-  alert("image upload error")
-  }
-  
-  })
-  
-  .catch(err => {
-  this.loading = false;
-  console.log(err)
+
+    if(this.companyList.length<=0)
+    {
+     this.adminRegistrationService.upload(this.choosenFile)
+     .then(url => {
+       if (url) {
+         this.CompanyForm.patchValue({
+           fileUrl: url
+         })
+     
+     this.adminRegistrationService.SaveCompany(this.CompanyForm.value).then(()=>
+     {
+       this.route.navigate(["/AdminHomePage/CompanyDetails"]);
+     });
+     } else {
+     alert("image upload error")
+     }
+     
+     })
+     
+     .catch(err => {
+     this.loading = false;
+     console.log(err)
+     })
+    
+    }
+    else
+   {
+    // console.log(this.companyList.length);
+     alert("This company details already exists");
+     
+     
+    
+   }
+
+
   })
  
- }
- else
-{
- // console.log(this.companyList.length);
-  alert("This company details already exists");
-  
-  
- 
-}
 
 
    

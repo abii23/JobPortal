@@ -14,6 +14,7 @@ export class PostViewComponent implements OnInit {
 
   company_id:any;
   Post_id:any;
+  count: any;
   
   constructor(private route:Router,private router:ActivatedRoute,private fb:FormBuilder,private ProviderRegistration:ProviderSerService) { }
   
@@ -28,7 +29,15 @@ export class PostViewComponent implements OnInit {
     
     
     console.log(this.company_id.value)
-    this.ProviderRegistration.getPost(this.company_id).subscribe((data:any[])=>(this.postList=data));
+    this.ProviderRegistration.getPost(this.company_id).subscribe((data:any[])=>{
+      
+      this.postList=data
+    
+      this.count=this.postList.length;
+    }
+    );
+    console.log(this.count);
+    
   }
   delete(Post_id:any){
     console.log(Post_id);

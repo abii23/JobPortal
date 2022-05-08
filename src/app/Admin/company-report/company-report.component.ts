@@ -12,6 +12,7 @@ export class CompanyReportComponent implements OnInit {
   public CompanyList:any[]=[];
   public DistrictList:any[]=[];
   category_id:any;
+  count: any;
 
   constructor(private route:Router,private router:ActivatedRoute,private fb:FormBuilder,private adminRegistrationService:AdminRegistrationService) { }
 
@@ -19,7 +20,12 @@ export class CompanyReportComponent implements OnInit {
     this.getCompany();
   }
   getCompany(){
-    this.adminRegistrationService.getPostList().then((data:any[])=>{this.CompanyList=data;console.log(this.CompanyList)});
+    this.adminRegistrationService.getPostList().then((data:any[])=>{
+      this.CompanyList=data;
+      console.log(this.CompanyList)
+                                  
+      this.count=this.CompanyList.length;
+    });
     
   }
   getDistrict(){

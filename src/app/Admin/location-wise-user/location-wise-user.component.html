@@ -10,13 +10,13 @@
                 <div class="card-body">
                   <div class="pagetitle">
 
-                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Location details</h1>
+                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Location wise User details</h1>
                       <nav>
                           <ol class="breadcrumb">
 
                               <li class="breadcrumb"><span class="iconify w3-large" [routerLink]="['/AdminHomePage']" data-icon="mdi:home" style="width: 35px; height: 35px;margin-top:-51%"></span></li>
                           <li class="breadcrumb-item">Location</li>
-                      <li class="breadcrumb-item active" >Location Details</li>    
+                      <li class="breadcrumb-item active" >Location wise User Details</li>    
                       </ol>
                       </nav>
                  </div> 
@@ -36,7 +36,7 @@
                        <div class="col-lg-12">
                            <div class="card">
                                <div class="card-body"></div>
-                               <p style="color: black;">No. of Locations : {{count}}</p>
+                               <p style="color: black;">No. of Companies : {{count}}</p>
                               <table class="table" *ngIf="LocationList">
                                   <p *ngIf="!LocationList"><em>Loading...</em></p>
 
@@ -47,7 +47,11 @@
                                   <thead>
                                       <tr>
                                           <th scope="col">#</th>
-                                          <th scope="col">Location Name</th>    
+                                          <th scope="col"> Name</th>  
+                                          <th scope="col">Qualification</th>  
+                                          <th scope="col">contact no.</th>
+                                          <th scope="col">Address</th>
+                                          
                                           <!-- <th scope="col">District</th>     -->
                                              
 
@@ -58,7 +62,12 @@
                                   <tbody>
                                       <tr *ngFor="let cu of LocationList;let i=index;">
                                           <td>{{i+1}}</td>
-                                          <td>{{cu.LocationName}}</td>
+                                          <td>{{cu.UserName}}</td>
+                                          <td>{{cu.Qualification}}</td>
+                                          <td>{{cu.ContactNum}}</td>
+                                          <td>{{cu.Address}}</td>
+                                        
+                                          
                                           
                                           <!-- <td>{{cu.DistrictName}}</td> -->
                                          

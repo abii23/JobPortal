@@ -10,29 +10,26 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 })
 export class CategoryReportComponent implements OnInit {
 
-  public CompanyList:any[]=[];
-  public DistrictList:any[]=[];
-  category_id:any;
+  constructor(private adminRegistrationService:AdminRegistrationService,private fb:FormBuilder,private router:Router,private route:ActivatedRoute) { 
+   
+  }
 
-  constructor(private route:Router,private router:ActivatedRoute,private fb:FormBuilder,private adminRegistrationService:AdminRegistrationService) { }
+  public categoryList:any[]=[];
+  category_id:any;
 
 
   ngOnInit(): void {
-    this.getCompany();
-  }
-  getCompany(){
-    this.adminRegistrationService.getPostList().then((data:any[])=>{this.CompanyList=data;console.log(this.CompanyList)});
+    this.getCategories();
     
   }
-  getDistrict(){
-    this.adminRegistrationService.getLocationById(this.CompanyList.values).subscribe((data:any[])=>(this.DistrictList=data));
+  getCategories(){
+    this.adminRegistrationService.getCategories().subscribe((data:any[])=>(this.categoryList=data));
   }
-  
-  delete(Company_id:any){
+  delete(category_id:any){
     if(confirm("Are you sure you want to delete this  record?")){
-      this.adminRegistrationService.deleteCompany(Company_id).then(()=>
+      this.adminRegistrationService.deleteCategory(category_id).then(()=>
       {
-        this.getCompany();
+        this.getCategories();
       },
       (error:any)=>console.error(error)
       );

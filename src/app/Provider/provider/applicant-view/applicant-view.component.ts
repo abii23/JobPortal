@@ -13,6 +13,7 @@ export class ApplicantViewComponent implements OnInit {
   company_id:any
   postList:any[]=['']
   PostControl = new FormControl('');
+  count: any;
 
   constructor(private providerRegistration:ProviderSerService,private fb:FormBuilder,private route:Router,private router:ActivatedRoute) { }
 
@@ -35,6 +36,7 @@ export class ApplicantViewComponent implements OnInit {
       {
         this.ApplicationList=data;
         console.log(this.ApplicationList);
+       
       }
       );
    
@@ -59,6 +61,7 @@ onChange(event: any) {
   console.log(res);
   this.ApplicationList = res;
   console.log(this.postList);
+  this.count=this.ApplicationList.length;
   })
 }
 

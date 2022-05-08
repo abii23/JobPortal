@@ -43,6 +43,8 @@ import { CategoryReportComponent } from './Admin/category-report/category-report
 import { SubcategoryReportComponent } from './Admin/subcategory-report/subcategory-report.component';
 import { CompanyReportComponent } from './Admin/company-report/company-report.component';
 import { LocationReportComponent } from './Admin/location-report/location-report.component';
+import { LocationWiseCompanyComponent } from './Admin/location-wise-company/location-wise-company.component';
+import { LocationWiseUserComponent } from './Admin/location-wise-user/location-wise-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +81,8 @@ import { LocationReportComponent } from './Admin/location-report/location-report
     SubcategoryReportComponent,
     CompanyReportComponent,
     LocationReportComponent,
+    LocationWiseCompanyComponent,
+    LocationWiseUserComponent,
    
   ],
   imports: [

@@ -19,13 +19,16 @@
                       <li class="breadcrumb-item active" >Application Details</li>    
                       </ol>
                       </nav>
-                 </div> 
+              
+                 
                  <!-- end page title -->
                <section class="section">
                    <div class="row">
                        <div class="col-lg-12">
                            <div class="card">
-                               <div class="card-body"></div>
+                               <div class="card-body">
+
+                               
                                <div class="form-group"> <label for="District id">Select Post</label> 
                                 <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;" [formControl]="PostControl" (change)="onChange($event)">
                                     <option value="">-- Select Post--</option>
@@ -33,9 +36,11 @@
                                         {{post.PostName}}
                                     </option>
                                 </select>
-                            </div> 
+                           
 
+                            <p style="color: black;">Total number of post : {{count}}</p>
                               <table class="table" *ngIf="ApplicationList">
+
                                   <p *ngIf="!ApplicationList"><em>Loading...</em></p>
                                   <thead>
                                       <tr>
@@ -44,6 +49,8 @@
                                           <th scope="col">Experience</th>    
                                           <th scope="col">Education</th>  
                                           <th scope="col">Expected Salary </th>
+                                          <th scope="col">Email</th>
+                                          <th scope="col">Contact Number</th>
                                           <th scope="col"> Description</th> 
                                           <!-- <th scope="col">Start Year</th>  -->
                                           <!-- <th scope="col">Description</th>  -->
@@ -60,7 +67,9 @@
                                           <td>{{cu.Experience}}</td>
                                           <td>{{cu.Education}}</td>
                                           <td>{{cu.ExpectedSalary}}</td>
-                                          <td>{{cu.Description}}</td>
+                                          <td>{{cu.email}}</td>
+                                          <td>{{cu.ContactNum}}</td>
+                                          <textarea style="color: rgb(107, 109, 111);">{{cu.Description}}</textarea>
                                           <!-- <td>{{cu.CompanyStartYear}}</td> -->
                                           <!-- <td>{{cu.Description}}</td> -->
                                          
@@ -68,13 +77,16 @@
                                           <!-- <td><a [routerLink]="[]" (click)="delete(cu.Application_Id)">Delete</a></td> -->
                                       </tr>
                                   </tbody>
-                              </table>
-
+                                </table>
+                            </div>
+                            </div> 
+                     
 
                            </div>
                        </div>
                    </div>
-               </section>
+                </section>
+            </div> 
               </div>
               </div>
             </div>

@@ -10,38 +10,49 @@
                 <div class="card-body">
                   <div class="pagetitle">
 
-                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Company details</h1>
+                      <h1 style="text-align: center;color: rgb(115, 115, 115);">Location wise company details</h1>
                       <nav>
                           <ol class="breadcrumb">
 
                               <li class="breadcrumb"><span class="iconify w3-large" [routerLink]="['/AdminHomePage']" data-icon="mdi:home" style="width: 35px; height: 35px;margin-top:-51%"></span></li>
-                          <li class="breadcrumb-item">Company</li>
-                      <li class="breadcrumb-item active" >Company Details</li>    
+                          <li class="breadcrumb-item">Location</li>
+                      <li class="breadcrumb-item active" >Location wise Company Details</li>    
                       </ol>
                       </nav>
                  </div> 
                  <!-- end page title -->
                <section class="section">
+
+                <div class="form-group"> <label for="District id">Select District</label> 
+                    <select class="form-control"style="color: rgb(255, 255, 255);background-color: 2A3038;" [formControl]="DistrictControl" (change)="onChange($event)"  formControlName="District">
+                        <option value="">-- Select Location--</option>
+                        <option *ngFor="let District of districtList" value="{{District.id}}">
+                            {{District.DistrictName}}
+                        </option>
+                    </select>
+                </div> 
+
                    <div class="row">
                        <div class="col-lg-12">
                            <div class="card">
                                <div class="card-body"></div>
-                               <p style="color: black;"> Total number of Companies : {{count}}</p>
+                               <p style="color: black;">No. of Companies : {{count}}</p>
+                              <table class="table" *ngIf="LocationList">
+                                  <p *ngIf="!LocationList"><em>Loading...</em></p>
+
+                                  
 
 
-                              <table class="table" *ngIf="CompanyList">
-                                  <p *ngIf="!CompanyList"><em>Loading...</em></p>
+
                                   <thead>
                                       <tr>
                                           <th scope="col">#</th>
-                                          <th scope="col">Name</th>    
-                                          <th scope="col">District</th>    
-                                          <th scope="col">Email</th>  
-                                          <th scope="col">Contact Number </th>
-                                          <th scope="col"> Location</th> 
-                                          <th scope="col"> Address</th>  
-                                          <!-- <th scope="col">Start Year</th>  -->
-                                          <!-- <th scope="col">Description</th>  -->
+                                          <th scope="col">Company Name</th>  
+                                          <th scope="col">Company email</th>  
+                                          <th scope="col">Company contact no.</th>
+                                          <th scope="col">Company Addres</th>
+                                          <th scope="col" >Company image</th>
+                                          <!-- <th scope="col">District</th>     -->
                                              
 
 
@@ -49,19 +60,19 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      <tr *ngFor="let cu of CompanyList;let i=index;">
+                                      <tr *ngFor="let cu of LocationList;let i=index;">
                                           <td>{{i+1}}</td>
                                           <td>{{cu.CompanyName}}</td>
-                                          <td>{{cu.DistrictName}}</td>
                                           <td>{{cu.CompanyEmail}}</td>
                                           <td>{{cu.CompanyContactNumber}}</td>
-                                          <td>{{cu.LocationName}}</td>
                                           <td>{{cu.CompanyAddress}}</td>
-                                          <!-- <td>{{cu.CompanyStartYear}}</td> -->
-                                          <!-- <td>{{cu.Description}}</td> -->
+                                          <td>
+                                              <img [src]="cu.fileUrl" alt="">
+                                          </td>
+                                          
+                                          <!-- <td>{{cu.DistrictName}}</td> -->
                                          
-                                          <td> <a [routerLink]="['/AdminHomePage/CompanyEdit',cu.Company_id]">edit</a></td>
-                                          <td><a [routerLink]="[]" (click)="delete(cu.Company_id)">Delete</a></td>
+                                         
                                       </tr>
                                   </tbody>
                               </table>

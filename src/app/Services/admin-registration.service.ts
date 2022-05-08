@@ -139,7 +139,7 @@ export class AdminRegistrationService {
       
     }
     getDistrictList() {                                               //select datas from district collection for select box
-      return this.afs.collection<any>("Collection_District").snapshotChanges()
+      return this.afs.collection<any>("Collection_District",(ref)=>ref.orderBy("DistrictName")).snapshotChanges()
         .pipe(map((item: any) => {
           const catData: any[] = []
           if (item) {
@@ -242,12 +242,25 @@ export class AdminRegistrationService {
     return this.afs.doc("Collection_Post/"+Location_id).delete();
   }
 
-  getProductByCategory(DistrictId: any) {                                 //select location using district id
+  getCompanyByLocation(DistrictId: any) {                                 //select location using district id
     console.log(DistrictId);
-    return this.afs.collection('Collection_Location', (ref) => ref.where("District",
+    return this.afs.collection('Collection_CompanyDetails', (ref) => ref.where("CompanyDistrict",
     "==", DistrictId))
     .valueChanges({ idField: "Location_Id" })
     } 
+    getUserByLocation(DistrictId: any) {                                 //select location using district id
+      console.log(DistrictId);
+      return this.afs.collection('Collection_user', (ref) => ref.where("UserDistrict",
+      "==", DistrictId))
+      .valueChanges({ idField: "Location_Id" })
+      } 
+
+    getProductByCategory(DistrictId: any) {                                 //select location using district id
+      console.log(DistrictId);
+      return this.afs.collection('Collection_Location', (ref) => ref.where("District",
+      "==", DistrictId))
+      .valueChanges({ idField: "Location_Id" })
+      } 
     getPostBySubCategory(SubcatId: any) {                                 //select location using district id
       console.log(SubcatId);
       return this.afs.collection('Collection_Post', (ref) => ref.where("SubCategory",
