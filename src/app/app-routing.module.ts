@@ -37,7 +37,10 @@ import { UserRegistrationComponent } from './user/user-registration/user-registr
 import { ViewMoreComponent } from './user/view-more/view-more.component';
 import { YourApplicationComponent } from './user/your-application/your-application.component';
 
-const routes: Routes = [{path:'user',component:UserHomeComponent,children:[
+const routes: Routes = [
+  
+  {path:'',redirectTo:'GuestHome',pathMatch:'full'},
+  {path:'user',component:UserHomeComponent,children:[
 ]},
 {path:'ViewMore/:id',component:ViewMoreComponent},
 {path:'applyDetails/:id',component:ApplicationFormComponent},

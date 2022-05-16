@@ -24,9 +24,19 @@ export class LocationWiseCompanyComponent implements OnInit {
       console.log(data)
     });
     //this.getLocation();
+
+    this.getCompany()
   }
   getLocation(){
     this.adminRegistration.getLocation().then((data:any[])=>(this.LocationList=data));
+  }
+  getCompany(){
+    this.adminRegistration.getPostList().then((data:any[])=>{
+      this.LocationList=data;
+      console.log(this.LocationList)
+      this.count=this.LocationList.length;
+    });
+    
   }
 
   onChange(event: any) {

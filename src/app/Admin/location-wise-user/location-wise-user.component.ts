@@ -25,9 +25,19 @@ export class LocationWiseUserComponent implements OnInit {
       console.log(data)
     });
     //this.getLocation();
+    this.getuser()
   }
   getLocation(){
     this.adminRegistration.getLocation().then((data:any[])=>(this.LocationList=data));
+  }
+
+  getuser(){
+    this.adminRegistration.getuserList().then((data:any[])=>{
+      this.LocationList=data;
+      console.log(this.LocationList)
+      this.count=this.LocationList.length;
+    });
+    
   }
 
   onChange(event: any) {

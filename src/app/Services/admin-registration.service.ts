@@ -382,6 +382,36 @@ export class AdminRegistrationService {
 
       }
 
+
+      getuserList(){
+         
+
+
+        return new Promise<any[]>((resolve, reject) => {
+          const Location = this.afs
+          .collection<any>("Collection_user", (ref) => ref.orderBy("UserName") )
+          .valueChanges({ idField: "user_id" })
+          .subscribe(prodRes => {
+            this.getDistict().subscribe(res => {
+              prodRes.forEach(el => {
+                el.DistrictName = res.find(el1 => el1.id === el.CompanyDistrict)?.DistrictName
+              })
+              
+              
+              resolve(prodRes)
+            })
+            this. getLocationListq().subscribe(res => {
+              prodRes.forEach(el => {
+                el.LocationName = res.find(el1 => el1.id === el.CompanyLocation)?.LocationName
+              })
+              
+              
+              resolve(prodRes)
+            })
+          })
+        })
+      }
+
       getDistict()
       {
        
@@ -434,6 +464,8 @@ export class AdminRegistrationService {
       return this.afs.collection('Collection_CompanyDetails', (ref) => ref.where("CompanyName","==", Name)
       .where("CompanyEmail","==",CompanyEmail) ).valueChanges({ idField: "CompanyId" })
       .pipe(tap(val => {
+        console.log("heheh");
+        
         console.log(val)
       }))
 

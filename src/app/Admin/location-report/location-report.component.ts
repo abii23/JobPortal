@@ -23,10 +23,14 @@ export class LocationReportComponent implements OnInit {
       this.districtList = data;
       console.log(data)
     });
-    //this.getLocation();
+    this.getLocation();
+
   }
   getLocation(){
-    this.adminRegistration.getLocation().then((data:any[])=>(this.LocationList=data));
+    this.adminRegistration.getLocation().then((data:any[])=>{this.LocationList=data
+    this.count=this.LocationList.length
+
+    });
   }
 
   onChange(event: any) {

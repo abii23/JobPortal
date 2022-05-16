@@ -55,6 +55,27 @@ export class UserSerService {
           return catData;
         }))
       }
+
+      getCompany()
+        {
+         
+
+          return this.afs.collection<any>("Collection_CompanyDetails").snapshotChanges()
+          .pipe(map((item: any) => {
+            const catData: any[] = []
+            if (item) {
+              // console.log(item)
+              item.forEach((el: any) => {
+                catData.push({
+                  id: el.payload.doc.id,
+                  ...el.payload.doc.data()
+                })
+              })
+            }
+            return catData;
+          }))
+
+        }
       
 
       
@@ -74,6 +95,8 @@ console.log(currentdate);
               this.getCompany().subscribe(res => {
                 prodRes.forEach(el => {
                   el.fileUrl = res.find(el1 => el1.id === el.company_id)?.fileUrl
+                  el.CompanyName = res.find(el1 => el1.id === el.company_id)?.CompanyName
+
                 })
                 resolve(prodRes)
               })
@@ -93,29 +116,7 @@ console.log(currentdate);
 
         }
 
-        getCompany()
-        {
-         
-
-          return this.afs.collection<any>("Collection_CompanyDetails").snapshotChanges()
-          .pipe(map((item: any) => {
-            const catData: any[] = [] 
-            if (item) {
-              // console.log(item)
-              item.forEach((el: any) => {
-                catData.push({
-                  id: el.payload.doc.id,
-                  ...el.payload.doc.data()
-                })
-    
-              })
-            }
-            return catData;
-          }))
-
-
-
-        }
+        
         SavePost(Location :any){
           const categorydata=JSON.parse(JSON.stringify(Location));
           return this.afs.collection("Collection_ApplyDetails").add(categorydata);

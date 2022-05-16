@@ -11,6 +11,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
 export class SubcategoryDetailsComponent implements OnInit {
   public SubcategoryList:any[]=[];
   category_id:any;
+  count: any;
 
 
   constructor(private adminRegistrationService:AdminRegistrationService,private route:Router,private router:ActivatedRoute,private fb:FormBuilder) { }
@@ -19,7 +20,11 @@ export class SubcategoryDetailsComponent implements OnInit {
     this.getSubCategories();
   }
   getSubCategories(){
-    this.adminRegistrationService.getSubCategories().then((data:any[])=>{this.SubcategoryList=data;console.log(this.SubcategoryList)});
+    this.adminRegistrationService.getSubCategories().then((data:any[])=>{this.SubcategoryList=data;
+      console.log(this.SubcategoryList)
+    this.count=this.SubcategoryList.length
+    
+    });
     console.log("hello");
     
     console.log(this.SubcategoryList);

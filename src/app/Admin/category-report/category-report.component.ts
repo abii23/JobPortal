@@ -9,6 +9,7 @@ import { AdminRegistrationService } from 'src/app/Services/admin-registration.se
   styleUrls: ['./category-report.component.scss']
 })
 export class CategoryReportComponent implements OnInit {
+  count: number;
 
   constructor(private adminRegistrationService:AdminRegistrationService,private fb:FormBuilder,private router:Router,private route:ActivatedRoute) { 
    
@@ -23,7 +24,10 @@ export class CategoryReportComponent implements OnInit {
     
   }
   getCategories(){
-    this.adminRegistrationService.getCategories().subscribe((data:any[])=>(this.categoryList=data));
+    this.adminRegistrationService.getCategories().subscribe((data:any[])=>{this.categoryList=data
+    this.count=this.categoryList.length
+    
+    });
   }
   delete(category_id:any){
     if(confirm("Are you sure you want to delete this  record?")){
